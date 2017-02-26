@@ -17,6 +17,10 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-xs-12 post_in_and_privacy_select">
+            </div>
+          </div>
+          <div class="row">
             <div class="col-xs-10">
             </div>
             <div class="col-xs-2">
