@@ -5,15 +5,15 @@
     <div class="col-md-1 col-sm-2 col-xs-3">
       <img src="./../src/img/header_logo.png" class="header_logo">
     </div>
-    <div class="header_nav col-md-5 col-sm-6 col-xs-9">
-      <ul class="nav nav-pills">
+    <div class="col-md-5 col-sm-6 col-xs-9">
+      <ul class="nav nav-pills header_nav">
         <li role="presentation" class="active nav_li"><a href="#">Startseite</a></li>
-        <li role="presentation" class="nav_li"><a href="#">YouTube-Blog</a></li>
-        <li role="presentation" class="nav_li"><a href="#">Mein Profil</a></li>
-        <li role="presentation" class="nav_li_with_icon"><a href="#"><i class="header_fa_icons fa fa-envelope fa-fw"></i></a></li>
-        <li role="presentation" class="nav_li_with_icon"><a href="#"><i class="header_fa_icons fa fa-user fa-fw"></i></a></li>
-        <li role="presentation" class="nav_li_with_icon"><a href="#"><i class="header_fa_icons fa fa-users fa-fw"></i></a></li>
-        <li role="presentation" class="nav_li_with_icon"><a href="#"><i class="header_fa_icons fa fa-cog fa-fw"></i></a></li>
+        <li role="presentation" class="nav_li"><a class="nav_header_pills" href="#">YouTube-Blog</a></li>
+        <li role="presentation" class="nav_li"><a class="nav_header_pills" href="#">Mein Profil</a></li>
+        <li role="presentation" class="nav_li_with_icon"><a class="nav_header_pills" href="#"><i class="header_fa_icons fa fa-envelope fa-fw"></i></a></li>
+        <li role="presentation" class="nav_li_with_icon"><a class="nav_header_pills" href="#"><i class="header_fa_icons fa fa-user fa-fw"></i></a></li>
+        <li role="presentation" class="nav_li_with_icon"><a class="nav_header_pills" href="#"><i class="header_fa_icons fa fa-users fa-fw"></i></a></li>
+        <li role="presentation" class="nav_li_with_icon"><a class="nav_header_pills" href="#"><i class="header_fa_icons fa fa-cog fa-fw"></i></a></li>
       </ul>
     </div>
     <div class="header_search_col col-lg-2 col-md-4 col-sm-4 hidden-xs">

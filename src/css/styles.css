@@ -23,30 +23,27 @@ html, body {
 }
 
 .header_nav {
-	padding-right: 30px;
-}
-
-.nav-pills {
 	margin-top: 3px;
 	float: right;
+	padding-right: 10px;
 }
 
-.nav-pills>li.active>a {
+.header_nav>li.active>a {
 	background-color: transparent;
 	color: #ffffff;
 }
 
-.nav-pills>li.active>a:active, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+.header_nav>li.active>a:active, .header_nav>li.active>a:focus, .header_nav>li.active>a:hover {
 	background-color: transparent;
 	color: #aa1d23;
 }
 
-.nav-pills>li>a:active, .nav-pills>li>a:focus, .nav-pills>li>a:hover {
+.header_nav>li>a:active, .header_nav>li>a:focus, .header_nav>li>a:hover {
 	background-color: transparent;
 	color: #aa1d23;
 }
 
-.nav-pills>li>a>i:active, .nav-pills>li>a>i:focus, .nav-pills>li>a>i:hover {
+.header_nav>li>a>i:active, .header_nav>li>a>i:focus, .header_nav>li>a>i:hover {
 	background-color: transparent;
 	color: #aa1d23;
 }
@@ -144,13 +141,46 @@ img.profilbild_post_box {
 	margin-top: 20px;
 }
 
-.sorting_box {
-  background-color: pink;
+#sorting_box {
 	height: 50px;
-	width: 400px;
+	width: 400px auto;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 10px;
+}
+
+.sorting_box_nav>li>a {
+	background-color: #eeeeee;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+.sorting_box_nav>li.active>a {
+	background-color: #eeeeee;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+.sorting_box_nav>li.active>a:active, .sorting_box_nav>li.active>a:focus, .sorting_box_nav>li.active>a:hover {
+	background-color: #d8d8d8;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+.sorting_box_nav>li>a:active, .sorting_box_nav>li>a:focus, .sorting_box_nav>li>a:hover {
+	background-color: #d8d8d8;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+.sorting_box_nav>li>a>i:active, .sorting_box_nav>li>a>i:focus, .sorting_box_nav>li>a>i:hover {
+	background-color: #d8d8d8;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 10px;
 }
 
 .posts {
@@ -158,10 +188,12 @@ img.profilbild_post_box {
 }
 
 .post {
-  background-color: gray;
 	height: 300px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
 }
 
 /* left sidebar */
@@ -302,17 +334,22 @@ img.profilbild_post_box {
 
 /* member list */
 
-.member_list_col {
+#member_list_col {
 	height: 100%;
 	position: static;
-	padding: 0px;
+	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
-.member_list {
-	margin-top: 20px;
-	margin-left: 0px;
-	margin-right: 0px;
-	background-color: purple;
+#member_list {
+	background-color: #eeeeee;
+	padding-top: 15px;
 	height: 100%;
+	width: 95%;
+	margin-left: auto;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
