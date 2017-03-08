@@ -1,5 +1,4 @@
 html, body {
-	background-color: grey;
 	width: 100%;
 	height: 100%;
 }
@@ -84,7 +83,6 @@ a {
 }
 
 .content {
-  background-color: blue;
   height: 100%;
 	padding-top: 45px;
 }
@@ -96,7 +94,6 @@ a {
 /* Chronik */
 
 .chronik {
-  background-color: green;
 	height: 100% auto;
 }
 
@@ -109,6 +106,9 @@ a {
 	margin-left: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
 img.profilbild_post_box {
@@ -154,12 +154,11 @@ img.profilbild_post_box {
 }
 
 .posts {
-  background-color: violet;
 	margin: 10px;
 }
 
 .post {
-  background-color: white;
+  background-color: gray;
 	height: 300px;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -167,8 +166,7 @@ img.profilbild_post_box {
 
 /* left sidebar */
 
-.left_sidebar_col {
-  background-color: yellow;
+#left_sidebar_col {
 	height: 100%;
 	padding-right: 0px;
 	padding-left: 0px;
@@ -176,28 +174,31 @@ img.profilbild_post_box {
 	padding-bottom: 20px;
 }
 
-.left_sidebar {
- background-color: pink;
- height: 100%;
- margin-top: 20px;
- margin-bottom: 20px;
- margin-left: 0px;
- margin-right: 0px;
+#left_sidebar {
+	background-color: #eeeeee;
+	padding-top: 15px;
+	height: 100%;
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
-.anouncement {
-	background-color: white;
-	height: 200px;
-	margin-bottom: 5px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
+#right_sidebar_anouncement {
+	height: 100px;
+	margin: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 /* right sidebar */
 
-.right_sidebar_col {
-  background-color: black;
+#right_sidebar_col {
 	height: 100%;
 	position: static;
 	padding-top: 20px;
@@ -206,41 +207,102 @@ img.profilbild_post_box {
 	padding-right: 0px;
 }
 
-.login {
-	height: 100px;
-	background-color: white;
-	margin: 0px;
-	margin-bottom: 10px;
+#right_sidebar {
+  background-color: #eeeeee;
+	padding-top: 15px;
+	height: 100%;
+	width: 95%;
+	margin-right: auto;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
-.notifications {
+#login {
+	height: auto;
+	background-color: #d8d8d8;
+	margin: 0px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+}
+
+#login_username {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#login_password {
+	width: 80%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#remember_me_checkbox {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#login_or_register {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#right_sidebar_notifications {
 	height: 100px;
-	background-color: white;
 	margin: 0px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.right_sidebar_nav {
+#right_sidebar_navigation {
+	line-height: 2.5em;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.navigation_symbols {
+	color: #000000;
+}
+
+#right_sidebar_nav {
 	height: 50px;
 	background-color: white;
 	margin: 0px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.blog_posts {
+#blog_posts {
 	height: 200px;
-	background-color: white;
 	margin: 0px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 /* member list */
 
 .member_list_col {
-  background-color: brown;
 	height: 100%;
 	position: static;
 	padding: 0px;
