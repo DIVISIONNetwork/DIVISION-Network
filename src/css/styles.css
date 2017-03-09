@@ -148,41 +148,6 @@ img.profilbild_post_box {
 	margin-bottom: 0px;
 }
 
-.sorting_box_nav>li>a {
-	background-color: #eeeeee;
-	color: #000000;
-	margin-left: 0px;
-	margin-right: 10px;
-}
-
-.sorting_box_nav>li.active>a {
-	background-color: #eeeeee;
-	color: #000000;
-	margin-left: 0px;
-	margin-right: 10px;
-}
-
-.sorting_box_nav>li.active>a:active, .sorting_box_nav>li.active>a:focus, .sorting_box_nav>li.active>a:hover {
-	background-color: #d8d8d8;
-	color: #000000;
-	margin-left: 0px;
-	margin-right: 10px;
-}
-
-.sorting_box_nav>li>a:active, .sorting_box_nav>li>a:focus, .sorting_box_nav>li>a:hover {
-	background-color: #d8d8d8;
-	color: #000000;
-	margin-left: 0px;
-	margin-right: 10px;
-}
-
-.sorting_box_nav>li>a>i:active, .sorting_box_nav>li>a>i:focus, .sorting_box_nav>li>a>i:hover {
-	background-color: #d8d8d8;
-	color: #000000;
-	margin-left: 0px;
-	margin-right: 10px;
-}
-
 .posts {
 	margin: 10px;
 }
@@ -200,10 +165,11 @@ img.profilbild_post_box {
 
 #left_sidebar_col {
 	height: 100%;
-	padding-right: 0px;
-	padding-left: 0px;
+	position: static;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 #left_sidebar {
@@ -211,14 +177,13 @@ img.profilbild_post_box {
 	padding-top: 15px;
 	height: 100%;
 	width: 95%;
-	margin-right: auto;
 	margin-left: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
-#right_sidebar_anouncement {
+#left_sidebar_anouncement {
 	height: 100px;
 	margin: 0px;
 	margin-top: 10px;
