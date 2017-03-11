@@ -6,16 +6,14 @@
           <input type="text" class="form-control" id="login_username" placeholder="Benutzername">
         <label for="login_password" class="sr-only">Passwort:</label>
           <input type="password" class="form-control" id="login_password" placeholder="Passwort">
-        <div class="checkbox" id="remember_me_checkbox">
-          <label><input type="checkbox">Angemeldet bleiben</label>
-        </div>
+          <div id="kontodaten_vergessen"><a href="#" class="text-left">Kontodaten vergessen?</a></div>
         <div id="login_or_register">
           <button type="submit" class="btn btn-danger">Anmelden</button>
           oder
           <a href="">Registrieren</a>
         </div>
     </form>
-    </div>
+  </div>
     <div id="right_sidebar_notifications">
       notifications
     </div>

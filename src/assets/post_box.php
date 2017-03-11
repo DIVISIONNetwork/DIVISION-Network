@@ -1,10 +1,10 @@
 <div class="post_box">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-1">
-        <img class="img-fluid rounded float-left profilbild_post_box" src="./../src/img/Profilbild.png">
+      <div class="col-md-1 hidden-sm hidden-xs">
+        <img class="" src="./../src/img/Profilbild.png" id="profilbild_post_box">
       </div>
-      <div class="col-xs-11">
+      <div class="col-md-11 col-sm-12 col-xs-12" id="was_gibts_neues_und_text_box_rahmen">
         <div class="row">
           <div class="was_gibts_neues_text col-xs-12">
             <h4>Was gibt's Neues RUBEN?</h4>
