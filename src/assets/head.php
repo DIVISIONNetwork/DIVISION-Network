@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Diese 3 Meta-Elemente müssen immer ganz oben im Head stehen -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/e04809d2c1.js"></script>
-  <link rel="stylesheet" href="./../src/css/styles.css">
+  <!-- DIVISION Network Stylesheet -->
+  <link rel="stylesheet" htype="text/css" href="./../src/css/styles.css">
+  <!-- DIVISION Network Favicon -->
   <link rel="apple-touch-icon" sizes="57x57" href="./../src/img/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="./../src/img/favicon/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="./../src/img/favicon/apple-icon-72x72.png">
@@ -26,6 +31,7 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <!-- DIVISION Network Website-Titel -->
   <title>DIVISION Network</title>
 </head>
-<body>
+<body class="container-fluid">

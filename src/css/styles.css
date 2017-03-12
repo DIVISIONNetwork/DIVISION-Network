@@ -7,10 +7,7 @@ html, body {
 
 #header {
   background-image: url(./../img/header_50px.png);
-  height: 45px;
-	width: 100%;
-	position: fixed;
-	z-index: 1;
+	height: 50px !important;
 	-webkit-box-shadow: 0px 5px 14px -2px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 5px 14px -2px rgba(0,0,0,0.75);
 	box-shadow: 0px 5px 14px -2px rgba(0,0,0,0.75);
@@ -30,6 +27,17 @@ html, body {
 
 #navbar_header {
 	padding-left: 5px;
+}
+
+#navbar_main_col {
+	padding-right: 0px;
+}
+
+#navbar_user_avatar {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	margin-bottom: 0px;
 }
 
 .container {
@@ -63,7 +71,7 @@ a {
 	padding-top: 45px;
 }
 
-.website_row {
+#website_row {
 	height: 100%;
 }
 
@@ -175,8 +183,8 @@ img#profilbild_post_box {
 	background-color: #eeeeee;
 	padding-top: 15px;
 	height: 100%;
-	width: 95%;
-	margin-left: auto;
+	width: 100%;
+	margin-right: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
@@ -207,7 +215,7 @@ img#profilbild_post_box {
   background-color: #eeeeee;
 	padding-top: 15px;
 	height: 100%;
-	width: 95%;
+	width: 100%;
 	margin-right: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
@@ -230,13 +238,13 @@ img#profilbild_post_box {
 }
 
 #login_username {
-	width: 80%;
+	width: 85%;
 	margin-right: auto;
 	margin-left: auto;
 }
 
 #login_password {
-	width: 80%;
+	width: 85%;
 	margin-top: 10px;
 	margin-right: auto;
 	margin-left: auto;
@@ -246,14 +254,14 @@ img#profilbild_post_box {
 	margin-top: 5px;
 	margin-bottom: 10px;
 	text-align: right;
-	width: 80%;
+	width: 85%;
 	margin-right: auto;
 	margin-left: auto;
 	font-size: 0.9em;
 }
 
 #login_or_register {
-	width: 80%;
+	width: 85%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -315,7 +323,7 @@ img#profilbild_post_box {
 	background-color: #eeeeee;
 	padding-top: 15px;
 	height: 100%;
-	width: 95%;
+	width: 90%;
 	margin-left: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);

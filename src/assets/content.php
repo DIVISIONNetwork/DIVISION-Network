@@ -1,5 +1,5 @@
 <div class="content container-fluid">
-  <div class="row website_row">
+  <div class="row" id="website_row">
     <?php include("./../src/assets/left_sidebar.php"); ?>
     <?php include("./../src/assets/chronik.php"); ?>
     <?php include("./../src/assets/right_sidebar.php"); ?>
