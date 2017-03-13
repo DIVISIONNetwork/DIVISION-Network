@@ -1,6 +1,5 @@
-<div class="container-fluid">
-  <div class="row" id="sorting_box_row">
-    <div class="col-xs-6" id="chronik_filter_button_cell">
+<div class="container-fluid" id="chronik_filter_button_container">
+    <div class="col-xs-12" id="chronik_filter_button_cell">
       <a class="btn btn-primary btn-xs" id="chronik_filter_button" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Sortieren nach: <span class="caret"></span>
       </a>
@@ -10,5 +9,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

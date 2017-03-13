@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Diese 3 Meta-Elemente müssen immer ganz oben im Head stehen -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Startseite</title>
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- THIS LINE -->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/e04809d2c1.js"></script>
   <!-- DIVISION Network Stylesheet -->
@@ -34,4 +39,4 @@
   <!-- DIVISION Network Website-Titel -->
   <title>DIVISION Network</title>
 </head>
-<body class="container-fluid">
+<body class="container-fluid" id="body">
