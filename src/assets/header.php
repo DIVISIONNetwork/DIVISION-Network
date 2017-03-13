@@ -26,17 +26,17 @@
               </form>
             <div id="navbar" class="collapse navbar-collapse nav navbar-nav navbar-right" id="header_nav">
               <ul class="nav navbar-nav">
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Startseite</a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">YouTube-Blog</a></li>
-                <li class="navi"><a href="index.php"><img class="img-rounded hidden-xs" src="./../src/img/Profilbild.png" id="navbar_user_avatar">RUBEN</a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Nachrichten</a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Mitglieder</a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Gruppen</a></li>
-                <li class="navi hidden-xs"><a href="index.php">Startseite</a></li>
-                <li class="navi hidden-xs"><a href="index.php"><i class="header_fa_icons fa fa-globe fa-lg"></i></a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Benachrichtigungen</a></li>
-                <li class="navi hidden-xs"><a href="index.php"><i class="header_fa_icons fa fa-cog fa-lg"></i></a></li>
-                <li class="navi hidden-lg hidden-md hidden-sm"><a href="index.php">Einstellungen</a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Startseite</a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">YouTube-Blog</a></li>
+                <li class="header_nav_li"><a href="index.php"><img class="img-rounded hidden-xs" src="./../src/img/Profilbild.png" id="navbar_user_avatar">RUBEN</a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Nachrichten</a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Mitglieder</a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Gruppen</a></li>
+                <li class="header_nav_li hidden-xs"><a href="index.php">Startseite</a></li>
+                <li class="header_nav_li hidden-xs"><a href="index.php"><i class="header_fa_icons fa fa-globe fa-lg"></i></a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Benachrichtigungen</a></li>
+                <li class="header_nav_li hidden-xs"><a href="index.php"><i class="header_fa_icons fa fa-cog fa-lg"></i></a></li>
+                <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Einstellungen</a></li>
               </ul>
             </div>
       </div>
