@@ -52,7 +52,6 @@ html {
 	margin-left: 10px;
 	margin-right: 0px;
 	margin-top: 0px;
-
 }
 
 .navbar-header {
@@ -234,8 +233,7 @@ img#profilbild_post_box {
 	height: auto;
 	background-color: #d8d8d8;
 	margin: 0px;
-	margin-bottom: 10px;
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-bottom: 10px;
 	width: 90%;
 	margin-right: auto;
@@ -246,31 +244,59 @@ img#profilbild_post_box {
 }
 
 #login_username {
-	width: 85%;
+	width: 95%;
 	margin-right: auto;
 	margin-left: auto;
 }
 
 #login_password {
-	width: 85%;
+	width: 95%;
 	margin-top: 10px;
 	margin-right: auto;
 	margin-left: auto;
 }
 
-#kontodaten_vergessen {
+#forgot_password_cell {
+	font-size: 0.9em;
 	margin-top: 5px;
 	margin-bottom: 10px;
-	padding-right: 20px;
 	text-align: right;
-	width: 100%;
-	font-size: 0.9em;
+	width: 95%;
+}
+
+a#forgot_password_text {
+	color: #999999;
+}
+
+a#forgot_password_text:hover {
+	color: #333333;
+	text-decoration: none;
 }
 
 #login_or_register {
-	width: 85%;
+	width: 95%;
+	margin-top: 10px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+#login_button {
+	width: 100%;
+	margin-bottom: 10px;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+}
+
+#register_button {
+	margin-top: 10px;
+	width: 100%;
+}
+
+#or_between_login_and_register {
+	width: 100%;
+	text-align: center;
+	color: #333333;
 }
 
 #right_sidebar_notifications {
@@ -323,18 +349,4 @@ img#profilbild_post_box {
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
-}
-
-.login_wide_cols {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-#login_or_register_row {
-	padding-left: 5px;
-}
-
-#or_between_login_and_register {
-	padding-top: 6px;
-	padding-left: 25px;
 }

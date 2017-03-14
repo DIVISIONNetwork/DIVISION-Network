@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- DIVISION Network Meta -->
+  <title>DIVISION Network</title>
   <meta name="description" content="Social Network und YouTube-Blog">
   <meta name="author" content="DIVISION Network">
   <!-- Bootstrap -->
@@ -33,7 +35,5 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  <!-- DIVISION Network Website-Titel -->
-  <title>DIVISION Network</title>
 </head>
 <body class="container-fluid" id="body">
