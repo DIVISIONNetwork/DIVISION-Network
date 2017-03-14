@@ -21,7 +21,7 @@
       <div class="col-xs-4">
         <button type="submit" class="btn btn-danger">Anmelden</button>
       </div>
-      <div class="col-xs-2" id="oder_col">
+      <div class="col-xs-2" id="or_between_login_and_register">
         oder
       </div>
       <div class="col-xs-4">

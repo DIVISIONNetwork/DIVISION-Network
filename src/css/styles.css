@@ -35,26 +35,28 @@ html {
 	margin-bottom: 0px;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-    color: #e6e6e6;
-}
-
-#header_navbar_area_container {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.navbar-header {
-	width: 100%;
-}
-
 #header_search_form {
 	width: 40%;
 }
 
 .header_nav_li {
-	background-color: #212121;
+	background-color: #151515;
 	height: 50px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-nav {
+	margin-left: 10px;
+	margin-right: 0px;
+	margin-top: 0px;
+
+}
+
+.navbar-header {
+	width: 100%;
 }
 
 .navbar-collapse {
@@ -81,12 +83,12 @@ html {
 	margin-top: 5px;
 }
 
-.chronik {
+#chronik {
 	padding-left: 10px;
 	padding-right: 25px;
 }
 
-.post_box {
+#post_box {
   background-color: #eeeeee;
 	height: auto;
 	width: 100%;
@@ -116,7 +118,7 @@ img#profilbild_post_box {
 	padding-left: 35px;
 }
 
-.post_box_posten_button {
+#post_box_posten_button {
 	float: right;
 	margin-top: 20px;
 }
@@ -291,10 +293,6 @@ img#profilbild_post_box {
 	margin-left: auto;
 }
 
-.navigation_symbols {
-	color: #000000;
-}
-
 #blog_posts {
 	height: 200px;
 	margin: 0px;
@@ -336,7 +334,7 @@ img#profilbild_post_box {
 	padding-left: 5px;
 }
 
-#oder_col {
+#or_between_login_and_register {
 	padding-top: 6px;
 	padding-left: 25px;
 }
