@@ -187,7 +187,8 @@ img#profilbild_post_box {
 #left_sidebar {
 	background-color: #eeeeee;
 	padding-top: 15px;
-	height: 100%;
+	height: auto;
+	min-height: 870px;
 	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
@@ -220,8 +221,8 @@ img#profilbild_post_box {
 #right_sidebar {
 	background-color: #eeeeee;
 	padding-top: 15px;
-
-	height: 100%;
+	height: auto;
+	min-height: 870px;
 	width: 100%;
 	margin-left: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
@@ -238,9 +239,10 @@ img#profilbild_post_box {
 	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
-	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
-	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
-	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	border-radius: 4px;
 }
 
 #login_username {
@@ -283,14 +285,17 @@ a#forgot_password_text:hover {
 #login_button {
 	width: 100%;
 	margin-bottom: 10px;
-	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
-	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
-	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.23);
+	background-color: #a1181a;
+  border-color: #941718;
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
 }
 
 #register_button {
 	margin-top: 10px;
 	width: 100%;
+	background-color: #bdbdbd;
 }
 
 #or_between_login_and_register {
@@ -300,16 +305,6 @@ a#forgot_password_text:hover {
 }
 
 #right_sidebar_notifications {
-	height: 100px;
-	margin: 0px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: 90%;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-#right_sidebar_nav {
 	height: 100px;
 	margin: 0px;
 	margin-top: 10px;
@@ -329,6 +324,36 @@ a#forgot_password_text:hover {
 	margin-left: auto;
 }
 
+#social_nav {
+	margin: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+	border-radius: 4px;
+}
+
+.right_sidebar_nav_li {
+	background-color: #d8d8d8;
+}
+
+.right_sidebar_nav_text {
+	color: #000000;
+}
+
+.right_sidebar_nav_text:hover {
+	color: #333333;
+	text-decoration: none;
+}
+
+.badge {
+	background-color: #bdbdbd;
+}
+
 /* member list */
 
 #member_list_col {
@@ -342,11 +367,110 @@ a#forgot_password_text:hover {
 
 #member_list {
 	background-color: #eeeeee;
+	height: auto;
 	padding-top: 15px;
-	height: 100%;
+	min-height: 870px;
 	width: 95%;
 	margin-left: auto;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
+}
+
+#member_list_nav {
+	margin: 0px;
+	margin-bottom: 10px;
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.member_list_li {
+	background-color: transparent;
+	padding-left: 0px;
+	border-bottom: solid #8d8d8d;
+	border-right: 0px;
+	border-left: 0px;
+	border-width: 1px;
+}
+
+.member_list_li_top {
+	background-color: transparent;
+	padding-left: 0px;
+	border-bottom: solid #8d8d8d;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-width: 1px;
+}
+
+.member_list_li_bottom {
+	background-color: transparent;
+	padding-left: 0px;
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+	border-width: 1px;
+}
+
+.member_list_name {
+	color: #000000;
+}
+
+.member_list_name:hover {
+	color: #333333;
+	text-decoration: none;
+}
+
+#member_list_online {
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+#member_list_offline {
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+.member_list_user_avatar {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+#member_list_search {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#member_list_search_button {
+	background-color: transparent;
+}
+
+#member_list_search_input {
+	background-color: transparent;
+	border-top: solid #dddddd;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid #dddddd;
+	border-radius: 0;
+	border-width: 1px;
+}
+
+#member_list_search_button {
+	background-color: transparent;
+	border-top: solid #dddddd;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid #dddddd;
+	border-radius: 0;
+	border-width: 1px;
+	margin-right: 0px;
 }
