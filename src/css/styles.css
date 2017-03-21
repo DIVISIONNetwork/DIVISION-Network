@@ -87,6 +87,8 @@ html {
 	padding-right: 25px;
 }
 
+/* Post-Box */
+
 #post_box {
   background-color: #eeeeee;
 	height: auto;
@@ -97,24 +99,58 @@ html {
 	margin-right: auto;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	padding-right: 20px;
-	padding-left: 20px;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
-img#profilbild_post_box {
-	width: 56px;
-	height: 56px;
-	margin-top: 15px;
-	margin-right: auto;
-	margin-left: auto;
+#post_box_avatar_cell {
+	width: 10%;
+	float: left;
 }
 
+#post_box_avatar {
+	margin-top: 12px;
+	max-width: 62px;
+	max-height: 62px;
+	width: auto;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
-#was_gibts_neues_und_text_box_rahmen {
-	padding-left: 35px;
+#whats_new_text_span {
+	width: 85%;
+	float: right;
+}
+
+#whats_new_text_span_mobile {
+	width: 100%;
+}
+
+#whats_new_text {
+	text-align: left;
+}
+
+#postbox_textarea {
+		height: 2.5em;
+    transition: all 0.5s ease;
+		resize: vertical;
+		max-width: 85%;
+		float: right;
+}
+
+#postbox_textarea_mobile {
+	width: 100%;
+}
+
+#post_textarea:focus {
+    height: 8em;
+		border-color: rgba(161,24,26,.25);
+		-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+		-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+		box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 }
 
 #post_box_posten_button {
@@ -251,11 +287,25 @@ img#profilbild_post_box {
 	margin-left: auto;
 }
 
+#login_username:focus {
+	border-color: rgba(161,24,26,.5);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
 #login_password {
 	width: 95%;
 	margin-top: 10px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+#login_password:focus {
+	border-color: rgba(161,24,26,.5);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 }
 
 #forgot_password_cell {
@@ -287,9 +337,6 @@ a#forgot_password_text:hover {
 	margin-bottom: 10px;
 	background-color: #a1181a;
   border-color: #941718;
-	-webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
-	-moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
-	box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.23);
 }
 
 #register_button {
