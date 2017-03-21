@@ -28,7 +28,7 @@
         <ul class="nav navbar-nav">
           <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Startseite</a></li>
           <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">YouTube-Blog</a></li>
-          <li class="header_nav_li"><a href="index.php"><img class="img-rounded hidden-xs" src="./../src/img/Profilbild.png" id="navbar_user_avatar">RUBEN</a></li>
+          <li class="header_nav_li"><a href="index.php"><img class="img-rounded hidden-xs" src="./../src/img/Profilbild.jpg" id="navbar_user_avatar">RUBEN</a></li>
           <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Nachrichten</a></li>
           <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Mitglieder</a></li>
           <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Gruppen</a></li>

@@ -117,7 +117,7 @@ html {
 	height: auto;
 	display: block;
 	margin-left: auto;
-	margin-right: auto;
+	margin-right: 0px;
 }
 
 #whats_new_text_span {
@@ -135,22 +135,54 @@ html {
 
 #postbox_textarea {
 		height: 2.5em;
-    transition: all 0.5s ease;
-		resize: vertical;
+		-webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out;
 		max-width: 85%;
 		float: right;
+		resize: vertical;
+}
+
+#postbox_textarea:focus {
+    height: 8em;
+		border-color: rgba(51,51,51,0.15);
+		-webkit-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		resize: vertical;
 }
 
 #postbox_textarea_mobile {
+	height: 2.5em;
+	-webkit-transition: height 0.3s ease-in-out;
+	-moz-transition: height 0.3s ease-in-out;
+	-o-transition: height 0.3s ease-in-out;
+	transition: height 0.3s ease-in-out;
+	width: 100%;
+	resize: vertical;
+}
+
+#postbox_textarea_mobile:focus {
+	height: 8em;
+	border-color: rgba(51,51,51,0.15);
+	-webkit-box-shadow: 0px 0px 2px 2px rgbargba(51,51,51,0.1);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	resize: vertical;
+}
+
+#select_post_content_and_post_button {
+	float: right;
+	width: 85%;
+}
+
+#select_post_content_and_post_button_mobile {
 	width: 100%;
 }
 
-#post_textarea:focus {
-    height: 8em;
-		border-color: rgba(161,24,26,.25);
-		-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
-		-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
-		box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+.select_post_content_buttons {
+	margin-top: 20px;
 }
 
 #post_box_posten_button {
@@ -288,7 +320,7 @@ html {
 }
 
 #login_username:focus {
-	border-color: rgba(161,24,26,.5);
+	border-color: rgba(161,24,26,.3);
 	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
@@ -302,7 +334,7 @@ html {
 }
 
 #login_password:focus {
-	border-color: rgba(161,24,26,.5);
+	border-color: rgba(161,24,26,.3);
 	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
@@ -511,6 +543,13 @@ a#forgot_password_text:hover {
 	border-width: 1px;
 }
 
+#member_list_search_input:focus {
+	border-color: rgba(51,51,51,0.15);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+}
+
 #member_list_search_button {
 	background-color: transparent;
 	border-top: solid #dddddd;
@@ -520,4 +559,11 @@ a#forgot_password_text:hover {
 	border-radius: 0;
 	border-width: 1px;
 	margin-right: 0px;
+}
+
+#member_list_search_button:focus {
+	border-color: rgba(51,51,51,0.15);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
 }
