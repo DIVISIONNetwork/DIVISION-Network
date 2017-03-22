@@ -142,6 +142,7 @@ html {
 		max-width: 85%;
 		float: right;
 		resize: vertical;
+		margin-bottom: 15px;
 }
 
 #postbox_textarea:focus {
@@ -170,6 +171,36 @@ html {
 	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
 	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
 	resize: vertical;
+}
+
+#postbox_link {
+		height: 2.5em;
+		max-width: 85%;
+		float: right;
+		margin-bottom: 15px;
+		resize: none;
+}
+
+#postbox_link:focus {
+		border-color: rgba(51,51,51,0.15);
+		-webkit-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+		resize: none;
+}
+
+#postbox_link_mobile {
+	height: 2.5em;
+	width: 100%;
+	resize: none;
+}
+
+#postbox_link_mobile:focus {
+	border-color: rgba(51,51,51,0.15);
+	-webkit-box-shadow: 0px 0px 2px 2px rgbargba(51,51,51,0.1);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+	resize: none;
 }
 
 #select_post_content_and_post_button {
@@ -566,4 +597,5 @@ a#forgot_password_text:hover {
 	-webkit-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
 	-moz-box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
 	box-shadow: 0px 0px 2px 2px rgba(51,51,51,0.1);
+
 }
