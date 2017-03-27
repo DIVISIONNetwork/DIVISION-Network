@@ -141,6 +141,7 @@ function change_postbox (a) {
       }
 }
 </script>
+
 <div class="container-fluid" id="post_box">
   <form>
     <div class="row">

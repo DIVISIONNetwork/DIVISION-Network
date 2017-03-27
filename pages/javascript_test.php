@@ -1,15 +1,11 @@
     <?php include("./../src/assets/head.php"); ?>
 
 
-    <script>
-    function test (a) {
-      if (a == "Video") {
-        document.write ("Video aufgerufen!");
-      }
-    }
-    </script>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+    </div>
 
-    <button type="button" onclick="test('Video');" value="Video">Video</button>
+    <img href="http://stackoverflow.com/questions/20888375/properly-embedding-youtube-video-into-bootstrap-3-0-page">
 
 
     <?php include("./../src/assets/footer.php"); ?>

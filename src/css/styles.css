@@ -250,6 +250,10 @@ html {
 	margin-left: 0px;
 }
 
+.filter_header {
+	font-weight: bold;
+}
+
 .posts {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -258,18 +262,93 @@ html {
 }
 
 .post {
+	font-size: 16px;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-right: 20px;
 	padding-left: 20px;
-	height: 300px;
+	height: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.13);
+}
+
+.post_user_avatar {
+	height: 65px;
+	width: 65px;
+}
+
+.post_avatar_cell {
+	float: left;
+	margin-right: 10px;
+}
+
+.posted_by_username {
+	margin-top: 0px;
+	color: #a1181a;
+}
+
+.posted_at_text {
+	color: #bdbdbd;
+}
+
+.post_text {
+	margin-top: 10px;
+}
+
+.video_container_container {
+  max-width: 640px;
+  margin-right:auto;
+	margin-top: 10px;
+}
+.video_container {
+  float: none;
+  clear: both;
+  width: 100%;
+  position: relative;
+  padding-bottom: 50%;
+  padding-top: 25px;
+  height: 0;
+}
+.video_container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.post_interaction_row {
+	padding-top: 10px;
+	padding-left: 15px;
+}
+
+.post_options_btn {
+	background-color: transparent;
+	border: none;
+}
+
+.post_options_btn:hover {
+	background-color: #bdbdbd;
+	border: none;
+}
+
+.btn-primary:active {
+	background-color: #bdbdbd !important;
+	border: none;
+}
+
+.post_options_btn:focus {
+	background-color: #bdbdbd;
+	border: none;
+}
+
+.post_options_symbol {
+	color: black;
 }
 
 /* left sidebar */
