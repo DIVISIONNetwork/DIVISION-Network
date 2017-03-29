@@ -635,7 +635,7 @@ a#forgot_password_text:hover {
 .sidebar_name img {
 		width: 32px;
 		height: 32px;
-		vertical-align:middle;
+		vertical-align: middle;
 }
 
 .popup-box {
@@ -674,7 +674,52 @@ a#forgot_password_text:hover {
 
 .popup-box .popup-messages {
 		height: 100%;
-		overflow-y: scroll;
+}
+
+.chat_input {
+	position: fixed;
+	bottom: 0px;
+	width: 298px;
+	resize: none;
+	border-radius: 0px;
+}
+
+.chat_massage_container {
+	width: 100%;
+	height: auto;
+	min-height: 30px;
+	display: block;
+}
+
+.chat_container {
+	height: 220px;
+	overflow-y: scroll;
+}
+
+.chat_massage_a {
+	background-color: #b3b3b3;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: auto;
+	max-width: 75%;
+	padding: 7px;
+	float: right;
+	border-radius: 10px;
+	font-size: 13px;
+}
+
+.chat_massage_b {
+	background-color: #dbdbdb;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: auto;
+	max-width: 75%;
+	padding: 7px;
+	float: left;
+	border-radius: 10px;
+	font-size: 13px;
 }
 
 /* Chat-Sidebar-Search */
