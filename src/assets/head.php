@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Das neueste kompilierte und minimierte CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <!-- Optionales Theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <!-- Das neueste kompilierte und minimierte JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- DIVISION Network Meta -->
+  <title>DIVISION Network</title>
+  <meta name="description" content="Social Network und YouTube-Blog">
+  <meta name="author" content="DIVISION Network">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/e04809d2c1.js"></script>
-  <link rel="stylesheet" href="./../src/css/styles.css">
+  <!-- DIVISION Network Stylesheet -->
+  <link rel="stylesheet" htype="text/css" href="./../src/css/styles.css">
+  <!-- DIVISION Network Favicon -->
   <link rel="apple-touch-icon" sizes="57x57" href="./../src/img/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="./../src/img/favicon/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="./../src/img/favicon/apple-icon-72x72.png">
@@ -28,6 +35,5 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  <title>DIVISION Network</title>
 </head>
-<body>
+<body class="container-fluid" id="body">
