@@ -410,7 +410,7 @@ html {
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 }
 
-#login {
+#login_or_register_container {
 	height: auto;
 	background-color: #d8d8d8;
 	margin: 0px;
@@ -419,6 +419,7 @@ html {
 	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
+	margin-bottom: 10px;
 	-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.25);
@@ -460,6 +461,14 @@ html {
 	width: 95%;
 }
 
+#show_login_again_text_cell {
+	font-size: 0.9em;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	text-align: right;
+	width: 95%;
+}
+
 a#forgot_password_text {
 	color: #999999;
 }
@@ -469,7 +478,16 @@ a#forgot_password_text:hover {
 	text-decoration: none;
 }
 
-#login_or_register {
+a#show_login_again_text {
+	color: #999999;
+}
+
+a#show_login_again_text:hover {
+	color: #333333;
+	text-decoration: none;
+}
+
+.login_or_register {
 	width: 95%;
 	margin-top: 10px;
 	margin-right: auto;
@@ -483,16 +501,65 @@ a#forgot_password_text:hover {
   border-color: #941718;
 }
 
-#register_button {
-	margin-top: 10px;
+#go_to_register_button {
+	margin-top: 0px;
 	width: 100%;
 	background-color: #bdbdbd;
+}
+
+#register_button {
+	width: 100%;
+	margin-bottom: 10px;
+	background-color: #a1181a;
+	border-color: #941718;
+	color: #ffffff;
 }
 
 #or_between_login_and_register {
 	width: 100%;
 	text-align: center;
 	color: #333333;
+}
+
+#register_email {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#register_email:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
+#register_username {
+	width: 95%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#register_username:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
+#register_password {
+	width: 95%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#register_password:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 }
 
 #right_sidebar_notifications {
@@ -707,6 +774,9 @@ a#forgot_password_text:hover {
 	float: right;
 	border-radius: 10px;
 	font-size: 13px;
+	word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .chat_massage_b {
@@ -720,6 +790,9 @@ a#forgot_password_text:hover {
 	float: left;
 	border-radius: 10px;
 	font-size: 13px;
+	word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Chat-Sidebar-Search */

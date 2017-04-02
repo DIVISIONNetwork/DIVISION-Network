@@ -17,10 +17,12 @@
   </div>
   <div class="row">
     <div class="col-xs-12 post_text">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-      At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-      sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-      et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+      <p><?php var_dump ($_POST); ?></p>
+
+      <p>Du bist aktuell nicht angemeldet. Bitte melde dich an!<br />Noch kein Mitglied? Registriere dich jetzt!</p>
+
+      <p>Du bist angemeldet als {username} <a href="logout.php">Abmelden</a></p>
     </div>
   </div>
   <div class="row post_interaction_row">

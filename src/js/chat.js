@@ -61,7 +61,7 @@
         element = element + '<div class="popup-head-left">'+ name +'</div>';
         element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
         element = element + '<div style="clear: both"></div></div><div class="popup-messages"><div class="chat_container">';
-        element = element + '<div class="chat_massage_container"><div class="chat_massage_a">Jo Jan, was denkst du über diesen neuen Chat?</div></div><div class="chat_massage_container"><div class="chat_massage_b">Ich denke er funktioniert noch nicht! xD</div></div>';
+        element = element + '<div class="chat_massage_container"><div class="chat_massage_a">Jo Jan, was hältst du vom neuen Chat?</div></div><div class="chat_massage_container"><div class="chat_massage_b">Ich denke er funktioniert noch nicht! xD</div></div>';
         element = element + '<div class="chat_massage_container"><div class="chat_massage_a">Ja leider! -.-</div></div><div class="chat_massage_container"><div class="chat_massage_b">Aber Kopf hoch... wird schon! ^^</div></div><div class="chat_massage_container"><div class="chat_massage_a">Jajajaja... eines schönen Tages!</div></div><div class="form-group"><textarea class="form-control chat_input" rows="1" id=""></textarea></div></div></div></div>';
         document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
         popups.unshift(id);

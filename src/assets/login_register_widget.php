@@ -1,6 +1,21 @@
-<div id="login">
+<!-- register_or_login.js wird eingebunden -->
+<script type="text/javascript" src="./../src/js/login_or_register.js"></script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        <?php include ("./../src/php/connect_to_database.php"); ?>
+        <?php include ("./../src/php/register_user_in_database.php"); ?>
+        <?php include ("./../src/php/is_registration_successfull.php"); ?>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="login_or_register_container">
   <div class="form-group">
-    <form>
+    <form method="post" action="">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -19,14 +34,22 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div id="login_or_register">
+            <div class="login_or_register">
               <button type="submit" class="btn btn-danger pull-center" id="login_button">Anmelden</button>
               <div id="or_between_login_and_register">oder</div>
-              <button type="submit" class="btn btn-default pull-center" id="register_button">Registrieren</button>
             </div>
           </div>
         </div>
       </div>
     </form>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="login_or_register">
+            <button class="btn btn-default pull-center" onclick="login_or_register('register');" id="go_to_register_button">Registrieren</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
