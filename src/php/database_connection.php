@@ -2,8 +2,8 @@
 
 /* Definition der nötigen Parameter zur Datenbankverbindung */
 $dsn = "mysql:host=localhost;dbname=division network;charset=utf8";
-$username = "ruben";
-$password = "SFh2ze6ynMm7sp9a";
+$username = "users";
+$password = "ZaJQ5mwxe3F3nz9n";
 
 try {
 

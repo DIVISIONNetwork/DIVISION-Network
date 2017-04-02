@@ -28,7 +28,7 @@ function login_or_register (a) {
                           <div class="row">
                             <div class="col-xs-12">
                               <div id="login_or_register">
-                                <button class="btn btn-default pull-center" id="register_button" name="register_button">Registrieren</button>
+                                <button class="btn btn-default pull-center" id="signup_button" name="signup_button">Registrieren</button>
                               </div>
                             </div>
                           </div>
@@ -69,7 +69,7 @@ function login_or_register (a) {
                       <div class="row">
                         <div class="col-xs-12">
                           <div class="login_or_register">
-                            <button class="btn btn-default pull-center" onclick="login_or_register('register');" id="go_to_register_button">Registrieren</button>
+                            <button class="btn btn-default pull-center" onclick="login_or_register('register');" id="go_to_signup_button">Registrieren</button>
                           </div>
                         </div>
                       </div>

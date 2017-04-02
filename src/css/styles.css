@@ -501,13 +501,13 @@ a#show_login_again_text:hover {
   border-color: #941718;
 }
 
-#go_to_register_button {
+#go_to_signup_button {
 	margin-top: 0px;
 	width: 100%;
 	background-color: #bdbdbd;
 }
 
-#register_button {
+#signup_button {
 	width: 100%;
 	margin-bottom: 10px;
 	background-color: #a1181a;

@@ -1,13 +1,15 @@
 <!-- register_or_login.js wird eingebunden -->
 <script type="text/javascript" src="./../src/js/login_or_register.js"></script>
 
+<!-- signup.php wird eingebunden -->
+<?php include ("./../src/php/signup.php"); ?>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
       <p>
-        <?php include ("./../src/php/connect_to_database.php"); ?>
-        <?php include ("./../src/php/register_user_in_database.php"); ?>
-        <?php include ("./../src/php/is_registration_successfull.php"); ?>
+        <?php if (isset($result)) {echo $result;} ?>
+        <?php if (!empty($form_errors)) {echo show_errors($form_errors);} ?>
       </p>
     </div>
   </div>
@@ -46,7 +48,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="login_or_register">
-            <button class="btn btn-default pull-center" onclick="login_or_register('register');" id="go_to_register_button">Registrieren</button>
+            <button class="btn btn-default pull-center" onclick="login_or_register('register');" id="go_to_signup_button">Registrieren</button>
           </div>
         </div>
       </div>
