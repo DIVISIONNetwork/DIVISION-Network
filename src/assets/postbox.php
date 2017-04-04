@@ -20,11 +20,11 @@
             <div id="post_box_avatar_cell">
               <img src="./../src/img/Profilbild.jpg" class="img-rounded" id="post_box_avatar">
             </div>
-            <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues <?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; ?>?</h4></span>
+            <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
             <textarea class="form-control" name="post_textarea" id="postbox_textarea"></textarea><br />
           </div>
           <div class="hidden-lg hidden-md hidden-sm col-xs-12">
-            <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues <?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; ?>?</h4></span>
+            <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
             <textarea class="form-control" name="post_textarea" id="postbox_textarea_mobile"></textarea><br />
           </div>
         </div>

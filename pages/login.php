@@ -39,7 +39,7 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="checkbox" id="remember_me_checkbox_cell">
-                    <label><input class="pull-right" type="checkbox" value="" id="remember_me_checkbox"><span id="remember_me_checkbox_text">Angemeldet bleiben</span></label>
+                    <label><input class="pull-right" type="checkbox" value="yes" id="remember_me_checkbox" name="remember"><span id="remember_me_checkbox_text">Angemeldet bleiben</span></label>
                   </div>
                 </div>
               </div>

@@ -19,6 +19,8 @@ if(isset($_POST['login_button'])) {
         $username = $_POST['Benutzername'];
         $password = $_POST['Passwort'];
 
+        isset($_POST["remember"]) ? $remember = $_POST["remember"] : $remember = "";
+
         // Überprüft, ob der Eintrag bereits in der Database existiert.
         $sqlQuery = "SELECT * FROM users WHERE username = :username";
         $statement = $db->prepare($sqlQuery);
@@ -32,6 +34,11 @@ if(isset($_POST['login_button'])) {
            if (password_verify($password, $hashed_password)){
                $_SESSION['id'] = $id;
                $_SESSION['username'] = $username;
+
+               if ($remember === "yes") {
+                 rememberMe($id);
+               }
+
                redirectTo("index");
            } else {
             $result = flashMessage("Benutzername oder Passwort nicht korrekt!");

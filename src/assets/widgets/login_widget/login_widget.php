@@ -14,7 +14,7 @@
               <label for="login_password" class="sr-only">Passwort:</label>
                 <input type="password" class="form-control" id="login_password" name="Passwort" placeholder="Passwort">
                 <div id="forgot_password_cell">
-                  <a href="forgot_password.php" id="forgot_password_text">Passwort vergessen?</a>
+                  <a href="./forgot_password.php" id="forgot_password_text">Passwort vergessen?</a>
                 </div>
             </div>
           </div>

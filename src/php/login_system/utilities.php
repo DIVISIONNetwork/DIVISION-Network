@@ -142,4 +142,51 @@ function checkDuplicateEntries ($table, $column_name, $value, $db) {
 }
 
 
+function rememberMe ($user_id) {
+  $encryptCookieData = base64_encode("Uh5R5tfzU3JüU1qHf9tFSTQR{$user_id}");
+  // Cookie wird gesetzt und läuft in 30 Tagen ab
+  setCookie("rememberUserCookie", $encryptCookieData, time()+60*60*24*100, "/");
+}
+
+function isCookieValid ($db) {
+  $isValid = false;
+
+  if (isset($_COOKIE["rememberUserCookie"])) {
+    $decryptCookieData = base64_decode($_COOKIE["rememberUserCookie"]);
+    $user_id = explode("Uh5R5tfzU3JüU1qHf9tFSTQR", $decryptCookieData);
+    $userID = $user_id[1];
+
+    $sqlQuery = "SELECT * FROM users WHERE id = :id";
+    $statement = $db->prepare($sqlQuery);
+    $statement->execute(array(":id" => $userID));
+
+    if ($row = $statement->fetch()) {
+      $id = $row["id"];
+      $username = $row["username"];
+
+      $_SESSION["id"] = $id;
+      $_SESSION["username"] = $username;
+      $isValid = true;
+    } else {
+      $isValid = false;
+      signout();
+    }
+  }
+  return $isValid;
+}
+
+function signout () {
+  unset($_SESSION["username"]);
+  unset($_SESSION["id"]);
+
+  if(isset($_COOKIE["rememberUserCookie"])) {
+    unset($_COOKIE["rememberUserCookie"]);
+    setCookie("rememberUserCookie", NULL, -1, "/");
+  }
+  session_destroy();
+  session_regenerate_id(true);
+  redirectTo("index");
+}
+
+
  ?>
