@@ -17,12 +17,11 @@
   </div>
   <div class="row">
     <div class="col-xs-12 post_text">
-
-      <p><?php var_dump ($_POST); ?></p>
-
+      <?php if (!isset($_SESSION["username"])): ?>
       <p>Du bist aktuell nicht angemeldet. Bitte melde dich an!<br />Noch kein Mitglied? Registriere dich jetzt!</p>
-
-      <p>Du bist angemeldet als {username} <a href="logout.php">Abmelden</a></p>
+        <?php else: ?>
+        <p>Du bist angemeldet als <?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; ?> <a href="./../src/php/login_system/logout.php">Abmelden</a></p>
+      <?php endif ?>
     </div>
   </div>
   <div class="row post_interaction_row">

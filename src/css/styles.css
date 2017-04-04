@@ -562,6 +562,55 @@ a#show_login_again_text:hover {
 	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
 }
 
+#password_reset_email {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#password_reset_email:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
+#password_reset_new_password {
+	width: 95%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#password_reset_new_password:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
+#password_reset_confirm_password {
+	width: 95%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#password_reset_confirm_password:focus {
+	border-color: rgba(161,24,26,.3);
+	-webkit-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	-moz-box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+	box-shadow: 0px 0px 2px 2px rgba(161,24,26,.25);
+}
+
+#password_reset_button {
+	width: 100%;
+	margin-bottom: 10px;
+	background-color: #a1181a;
+	border-color: #941718;
+	color: #ffffff;
+}
+
 #right_sidebar_notifications {
 	height: 100px;
 	margin: 0px;
