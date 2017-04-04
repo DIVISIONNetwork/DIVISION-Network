@@ -1,9 +1,9 @@
 <?php $page_title = "Registrieren - DIVISION Network" ?>
-<?php include("./../src/php/login_system/signup.php"); ?>
-<?php include("./../src/assets/head.php"); ?>
-<?php include("./../src/assets/header.php"); ?>
+<?php include_once("./../src/php/login_system/signup.php"); ?>
+<?php include_once("./../src/assets/head.php"); ?>
+<?php include_once("./../src/assets/header.php"); ?>
 <div class="container-fluid" id="content">
-    <?php include("./../src/assets/left_sidebar.php"); ?>
+    <?php include_once("./../src/assets/left_sidebar.php"); ?>
     <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
       <div id="login_or_signup_container">
         <div class="container-fluid">
@@ -53,8 +53,8 @@
     </div>
     <div class="col-lg-2 col-md-4 col-sm-4 hidden-xs" id="right_sidebar_col">
       <div id="right_sidebar">
-      <?php include("./../src/assets/widgets/social_nav_widget/social_nav_widget.php"); ?>
+      <?php include_once("./../src/assets/widgets/social_nav_widget/social_nav_widget.php"); ?>
       </div>
     </div>
-    <?php include("./../src/assets/widgets/chat_widget/chat_widget.php"); ?>
+    <?php include_once("./../src/assets/widgets/chat_widget/chat_widget.php"); ?>
 </div>

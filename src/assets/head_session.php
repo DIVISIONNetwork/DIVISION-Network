@@ -1,7 +1,7 @@
-<?php include("./../src/php/login_system/session.php"); ?>
-<?php include("./../src/php/login_system/database_connection.php"); ?>
-<?php include("./../src/php/login_system/utilities.php"); ?>
-<?php include("./../src/php/login_system/login.php"); ?>
+<?php include_once("./../src/php/login_system/session.php"); ?>
+<?php include_once("./../src/php/login_system/database_connection.php"); ?>
+<?php include_once("./../src/php/login_system/utilities.php"); ?>
+<?php include_once("./../src/php/login_system/login.php"); ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>

@@ -1,5 +1,5 @@
-<?php include("./../src/php/login_system/session.php"); ?>
-<?php include("./../src/php/login_system/database_connection.php"); ?>
+<?php include_once("./../src/php/login_system/session.php"); ?>
+<?php include_once("./../src/php/login_system/database_connection.php"); ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
