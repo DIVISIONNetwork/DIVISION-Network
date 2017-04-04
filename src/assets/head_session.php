@@ -1,3 +1,7 @@
+<?php include("./../src/php/login_system/session.php"); ?>
+<?php include("./../src/php/login_system/database_connection.php"); ?>
+<?php include("./../src/php/login_system/utilities.php"); ?>
+<?php include("./../src/php/login_system/login.php"); ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <!-- DIVISION Network Meta -->
-  <title><?php if(isset($page_title)) echo $page_title; ?></title>
+  <title>DIVISION Network</title>
   <meta name="description" content="Social Network und YouTube-Blog">
   <meta name="author" content="DIVISION Network">
   <!-- Bootstrap -->

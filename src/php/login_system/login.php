@@ -32,19 +32,17 @@ if(isset($_POST['login_button'])) {
            if (password_verify($password, $hashed_password)){
                $_SESSION['id'] = $id;
                $_SESSION['username'] = $username;
-               $URL="http://localhost/DIVISION-Network/DIVISION-Network/pages/";
-               echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-               echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+               redirectTo("index");
            } else {
-            $result = "<p>Benutzername oder Passwort nicht korrekt!</p>";
+            $result = flashMessage("Benutzername oder Passwort nicht korrekt!");
            }
        }
 
     } else {
         if (count($form_errors) == 1) {
-          $result = "<p>Eine deiner Angaben ist nicht korrekt:</p>";
+          $result = flashMessage("Eine deiner Angaben ist nicht korrekt:");
         } else {
-          $result = "<p>" . count($form_errors) . " deiner Angaben sind nicht korrekt:";
+          $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
         }
     }
 }

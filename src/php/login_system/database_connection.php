@@ -14,6 +14,9 @@ try {
   "setAttribute"-Befehl (unterhalb) umgangen.*/
   $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
+  //Error-Mode auf Exception setzen
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
   /* Nachricht bei erfolgreicher Verbindung zur Database */
   // echo "<br /><br />Verbindung mit DIVISION Network Database erfolgreich!";
 

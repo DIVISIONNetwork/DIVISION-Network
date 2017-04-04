@@ -1,9 +1,9 @@
 <?php
 
 include ("./../src/php/login_system/database_connection.php");
-include ("./..//src/php/login_system/utilities.php");
+include ("./../src/php/login_system/utilities.php");
 
-if(isset($_POST["signup_button"])) {
+if(isset($_POST["E-Mail"])) {
 
   // Initialisiert ein Array in dem alle Fehlermeldungen gespeichert werden.
   $form_errors = array();
@@ -15,7 +15,7 @@ if(isset($_POST["signup_button"])) {
   $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
   // Ein assoziatives Array mit allen Pflichtfeldern mit einer minimalen Zeichenanzahl.
-  $fields_to_check_length = array ("Benutzername" => 2, "Passwort" => 8);
+  $fields_to_check_length = array("Benutzername" => 2, "Passwort" => 8);
 
   // Ruft die Funktion check_min_length() auf und merged die Rückgabewerte in das $form_errors Array.
   $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
@@ -23,25 +23,30 @@ if(isset($_POST["signup_button"])) {
   // Ruft die Funktion check_email() auf und merged die Rückgabewerte in das $form_errors Array.
   $form_errors = array_merge($form_errors, check_email($_POST));
 
-  //Wenn das $form_errors-Array leer ist, werden die Daten in die Database eingespeist.
-  if (empty($form_errors)) {
+  /**
+   * Fragt ab, ob das Registrierungs-Formular abgeschickt wurde und speichert
+   * dann die Variablen aus dem Array in einzelnen Variablen ab.
+   */
+    $email = $_POST["E-Mail"];
+    $username = $_POST["Benutzername"];
+    $password = $_POST["Passwort"];
 
-    /**
-     * Fragt ab, ob das Registrierungs-Formular abgeschickt wurde und speichert
-     * dann die Variablen aus dem Array in einzelnen Variablen ab.
-     */
-      $email = $_POST["E-Mail"];
-      $username = $_POST["Benutzername"];
-      $password = $_POST["Passwort"];
+    if (checkDuplicateEntries("users", "email", $email, $db)) {
+      $result = flashMessage("Registrierung nicht möglich: E-Mail Adresse ist bereits vergeben, bitte verwende eine andere.");
+      // Ist die E-Mail nicht schon in Verwendung, so wird geprüft, ob der Benutzername schon vergeben ist
+    } elseif (checkDuplicateEntries("users", "username", $username, $db)) {
+      $result = flashMessage("Registrierung nicht möglich: Benutzername ist bereits vergeben, bitte verwende einen anderen.");
+      // Ist der Benutzername nicht schon vergeben, so wird geprüft, ob es sonst Fehler gibt
+      } elseif (empty($form_errors)) {
 
       // Verschlüselung des Passworts mit der Funktion password_hash().
       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    /**
-     * Im try-Block wird versucht die Daten aus dem Registrierungs-Formular in die
-     * Datenbank zu speichern. Schlägt dies fehl werden die Exceptions im
-     * catch-Block abgefangen.
-     */
+      /**
+       * Im try-Block wird versucht die Daten aus dem Registrierungs-Formular in die
+       * Datenbank zu speichern. Schlägt dies fehl werden die Exceptions im
+       * catch-Block abgefangen.
+      */
       try {
         // Definiert das SQL-Insert Statement in der Variablen $sqlInsert.
         $sqlInsert = "INSERT INTO users (username, email, password, join_date) VALUES (:username, :email, :password, now())";
@@ -68,7 +73,7 @@ if(isset($_POST["signup_button"])) {
         * UPDATE-Statement betroffenen Datenbank-Zeilen zurück.
         */
         if ($statement->rowCount() == 1) {
-          $result = '<p>Registrierung erfolgreich!</p>';
+          $result = flashMessage("Registrierung erfolgreich!", "Pass");
         }
 
       /**
@@ -76,14 +81,14 @@ if(isset($_POST["signup_button"])) {
        * mit der dazugehörigen Fehlermeldung aus.
        */
       } catch (PDOException $ex) {
-        $result = '<p>Registrierung fehlgeschlagen:' . $ex->getMessage() . '</p>';
+        $result = flashMessage("Registrierung fehlgeschlagen: " . $ex->getMessage());
       }
     // Es wird eine Liste der vorliegenden Fehler (unausgefüllten Felder im Formular) ausgegeben.
     } else {
       if (count($form_errors) == 1) {
-        $result = "<p>Eine deiner Angaben ist nicht korrekt:<br />";
+        $result = flashMessage("Eine deiner Angaben ist nicht korrekt: ");
       } else {
-        $result = "<p>" . count($form_errors) . " deiner Angaben sind nicht korrekt:";
+        $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
       }
     }
 }

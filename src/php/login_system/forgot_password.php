@@ -12,7 +12,7 @@ if (isset($_POST["password_reset_button"])) {
   $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
   // Ein assoziatives Array mit allen Pflichtfeldern mit einer minimalen Zeichenanzahl.
-  $fields_to_check_length = array ("Neues_Passwort" => 8, "Neues_Passwort_bestätigen" => 8);
+  $fields_to_check_length = array("Neues_Passwort" => 8, "Neues_Passwort_bestätigen" => 8);
 
   // Ruft die Funktion check_min_length() auf und merged die Rückgabewerte in das $form_errors Array.
   $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
@@ -51,13 +51,13 @@ if (isset($_POST["password_reset_button"])) {
            $statement = $db->prepare($sqlQuery);
 
           // Führt das vorbereitete SQL-Statement aus.
-           $statement->execute(array("email" => $email));
+           $statement->execute(array(":email" => $email));
 
           // Überprüft, ob Eintrag bereits existiert.
           if ($statement->rowCount() == 1) {
 
             // Verschlüselung des Passworts mit der Funktion password_hash().
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
 
             // Definiert das SQL-Insert Statement in der Variablen $sqlQuery.
             $sqlUpdate = "UPDATE users SET password =:password WHERE email =:email";
@@ -77,20 +77,20 @@ if (isset($_POST["password_reset_button"])) {
             $statement->execute(array(":password" => $hashed_password, ":email" => $email));
 
             // Gibt "Passwort wurde geändert" aus, wenn das Passwort erfolgreich geändert wurde.
-            $result = "<p>Passwort wurde geändert.</p>";
+            $result = flashMessage("Passwort wurde geändert.", "Pass");
           } else {
             // Gibt "Die von dir eingegebene E-Mail Adresse existiert nicht." aus, wenn keine übereinstimmende E-Mail Adresse gefunden wurde.
-            $result = "<p>Die von dir eingegebene E-Mail Adresse existiert nicht.</p>";
+            $result = flashMessage("Die von dir eingegebene E-Mail Adresse existiert nicht.");
           }
         } catch (PDOException $ex) {
-          $result = '<p>Passwort ändern fehlgeschlagen:' . $ex->getMessage() . '</p>';
+          $result = flashMessage("Passwort ändern fehlgeschlagen:" . $ex->getMessage());
         }
       }
     } else {
       if (count($form_errors) == 1) {
-        $result = "<p>Eine deiner Angaben ist nicht korrekt:<br />";
+        $result = flashMessage("Eine deiner Angaben ist nicht korrekt:<br />");
       } else {
-        $result = "<p>" . count($form_errors) . " deiner Angaben sind nicht korrekt:";
+        $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
         }
     }
 }

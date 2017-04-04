@@ -51,7 +51,7 @@ function check_min_length ($fields_to_check_length) {
 function check_email ($data) {
 
   $form_errors = array ();
-  $key = "email";
+  $key = "E-Mail";
 
   if (array_key_exists($key, $data)) {
     if ($_POST[$key] != NULL) {
@@ -65,13 +65,13 @@ function check_email ($data) {
 }
 
 
-
 /**
+ * @method show_errors(): eine Funktion, die alle Fehlermeldungen ausgibt.
  * @param $form_errors_array: ein Array, welches alle Fehler enthält.
+ * @var $errors: eine Variable, in der die Fehlermeldungen gespeichert werden.
  * @return gibt einen String (HTML-Markup) aus, der eine Liste mit allen
  * Fehlermeldungen ausgibt.
  */
-
  function show_errors ($form_errors_array) {
    $errors = "<p><ul>";
 
@@ -81,5 +81,65 @@ function check_email ($data) {
    $errors .= "</ul></p>";
    return $errors;
  }
+
+
+/**
+ * @method flashMessage(): Eine Funktion, die Fehler- bzw. Erfolgsnachrichten ausgibt.
+ * @param $message: Die auszugebende Fehler-/Erfolgsnachricht.
+ * @param $passOrFail: gibt an, ob es sich um eine Fehler- oder Erfolgsnachricht handelt. "Fail" ist dabei das Default-Value.
+ * @var $data: eine Variable, in der die Erfolgs- bzw. Fehlernachrichten gespeichert werden.
+ * @return gibt die Fehler- bzw. Erfolgsnachricht zurück.
+ */
+function flashMessage ($message, $passOrFail = "Fail") {
+
+  // Wenn die Operation erfolgreich war, wird eine Erfolgsnachricht erzeugt
+  if ($passOrFail === "Pass") {
+    $data = "<div class='alert alert-success' role='alert' id='login_system_alertbox'>{$message}";
+    // Wenn die Operation nicht erfolgreich war, wird eine Fehlernachricht erzeugt
+  } else {
+    $data = "<div class='alert alert-danger' role='alert' id='login_system_alertbox'>{$message}";
+  }
+  return $data;
+}
+
+
+/**
+ * @method redirectTo(): eine Funktion, die einen Redirect vornimmt.
+ * @param $page: die Seite zu der redirected werden soll.
+ */
+function redirectTo($page) {
+  header("Location: {$page}.php");
+}
+
+
+/**
+ * @method checkDuplicateEntries(): eine Funktion die anhand der vier Parameter
+ * $table, $column_name, $value und $db das Registrierungsformular auf doppelte
+ * Einträge überprüft.
+ * @param $table: der Name des Datenbank-Tables, der überprüft werden soll.
+ * @param $column_name: der Name der Table-Spalte, die überprüft werden soll.
+ * @param $value: der Names des Formular-Feldes, das überprüft werden soll.
+ * @param $db: das Datenbank-Objekt.
+ * @var $sqlQuery: eine Variable in der das SQL-Statement erzeugt wird.
+ * @var $statement: eine Variable, in der das SQL-Statement vorbereitet wird.
+ */
+function checkDuplicateEntries ($table, $column_name, $value, $db) {
+
+  try {
+    $sqlQuery = "SELECT * FROM " .$table. " WHERE " .$column_name. " =:$column_name";
+
+    $statement = $db->prepare($sqlQuery);
+
+    $statement->execute(array(":$column_name" => $value));
+
+    if ($row = $statement->fetch()) {
+      return true;
+    }
+    return false;
+  } catch (PDOException $ex) {
+    $result = flashMessage("Fehlgeschlagen: " . $ex->getMessage());
+  }
+}
+
 
  ?>
