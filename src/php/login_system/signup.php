@@ -57,7 +57,7 @@ if(isset($_POST["E-Mail"])) {
          * (wenn erfolgreich) in der Variablen $statement (wenn nicht erfolreich
          * wird false zurückgegeben).
          *
-         * @method prepare(): Bereitet ein Statement zur ausführung vor und gibt ein
+         * @method prepare(): Bereitet ein Statement zur Ausführung vor und gibt ein
          * Statement-Objekt zurück.
          */
          $statement = $db->prepare($sqlInsert);

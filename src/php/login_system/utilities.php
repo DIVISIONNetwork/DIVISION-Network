@@ -31,9 +31,10 @@ function check_empty_fields ($required_fields_array) {
   // Loop durch das $required_fields_array-Array
   foreach ($required_fields_array AS $name_of_field) {
 
-    // Wenn das Feld nicht ausgefüllt wurde oder der Wert des Feldes NULL ist, wird das Feld
-    // zusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
+    // Wenn das Feld nicht ausgefüllt wurde oder der Wert des Feldes NULL ist,
     if (!isset($_POST[$name_of_field]) || $_POST[$name_of_field] == NULL) {
+
+      // wird das Feldzusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
       $form_errors[] = $name_of_field . " ist ein Pflichtfeld";
     }
 
@@ -78,6 +79,8 @@ function check_min_length ($fields_to_check_length) {
     // Wenn vom Benutzer weniger Zeichen in ein Feld mit Mindestanzahl an Zeichen eingetragen wurden als nötig, wird der
     // Name des Feldes zusammen mit einer Fehlermeldung in das $form_errors-Array gespeichert.
     if (strlen(trim($_POST[$name_of_field])) < $minimum_length_required) {
+
+      // wird der Name des Feldes zusammen mit einer Fehlermeldung in das $form_errors-Array gespeichert.
       $form_errors[] = $name_of_field . " muss mindestens aus {$minimum_length_required} Zeichen bestehen.";
     }
 
@@ -97,11 +100,12 @@ function check_min_length ($fields_to_check_length) {
  * Buchstaben, Zahlen und !#$%&'*+-/=?^_`{|}~@.[].
  * @FILTER_VALIDATE_EMAIL: Prüft, ob es sich um eine gülitige E-Mail-Adresse handelt.
  *
- * @$data: enthält ein assoziatives Array (hier: $_POST mit den Formulardaten) in dem als Key der Name des zu prüfenden
- * Form-Elements (hier "E-Mail") und als Value die vom Nutzer eingegebene Zeichenfolge gespeichert ist.
- * @$form_errors:
- * @$key:
- * @$_POST:
+ * @$form_errors: ein Array, in das wenn eine ungültige E-Mail-Adresse eingegeben wurde, die
+ * angegebene E-Mail und eine Fehlermeldung gespeichert wird.
+ * @$key: eine Variable, die den Key definiert, welches Feld im Formular überprüft werden soll (hier: "E-Mail").
+ * @$_POST: ein assoziatives Array, welches als Key die Namen der Formularfelder (u.a.) hat und zu
+ * jedem dieser Formularfelder den eingetragenen Wert als Value speichert oder übermittelt, dass
+ * der Wert für das Feld nicht gesetzt wurde (also das Feld nicht ausgefüllt wurde).
  *
  * @return: gibt ein Array mit dem E-Mail-Error aus.
  */
@@ -110,22 +114,22 @@ function check_min_length ($fields_to_check_length) {
    // Initialisierung eines Arrays in das bei einer nicht gültigen E-Mail-Adresse die E-Mail-Adresse und eine
    // Fehlermeldung gespeichert werden.
    $form_errors = array();
-   // $key wird als "E-Mail" definiert
+   // $key wird als "E-Mail" definiert.
    $key = "E-Mail";
 
-   // Wenn der Key ($key) im Array ($data) existiert
+   // Wenn der Key ($key) im Array ($data) existiert,
    if (array_key_exists($key, $_POST)) {
 
-     // Wenn für $_POST[$key] ein Wert existiert
+     // und wenn für $_POST[$key] ein Wert existiert,
      if ($_POST[$key] != NULL) {
 
-       // Wird $key auf die bereinigte E-Mail-Adresse gesetzt
+       // wird $key auf die bereinigte E-Mail-Adresse gesetzt.
        $email = filter_var($_POST[$key], FILTER_SANITIZE_EMAIL);
 
-       // Wenn es sich um keine gültige E-Mail-Adresse handelt
+       // und wenn es sich um keine gültige E-Mail-Adresse handelt,
        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 
-         // Wird die E-Mail-Adresse zusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
+         // wird die E-Mail-Adresse zusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
          $form_errors[] = $email . " ist keine gültige E-Mail Adresse.";
        }
 
@@ -139,52 +143,65 @@ function check_min_length ($fields_to_check_length) {
 
 
 /**
- * @show_errors(): eine Funktion, die alle Fehlermeldungen ausgibt.
+ * @show_errors(): eine Funktion, die alle gefundenen Fehlermeldungen in einer Liste ausgibt
+ * und diese Liste zurückgibt.
  *
  * @$form_errors_array: ein Array, welches alle Fehler enthält.
  * @$errors: eine Variable, in der die Fehlermeldungen gespeichert werden.
- * @$the_error:
+ * @$the_error: eine Variable, in der bei jedem Schleifen-Durchlauf eine Fehlermeldung
+ * gespeichert wird.
  *
- * @return: gibt einen String (HTML-Markup) aus, der eine Liste mit allen
- * Fehlermeldungen ausgibt.
+ * @return: gibt eine Liste aller Fehlermeldungen zurück.
  */
  function show_errors ($form_errors_array) {
 
-   $errors = "<p><ul>";
+   // In der Variablen $errors wird das öffnende <ul>-Tag gespeichert.
+   $errors = "<ul>";
 
+   // Das $form_errors_array-Array wird in einer foreach-Schleife durchlaufen.
    foreach ($form_errors_array AS $the_error) {
 
+     // An den in $errors gespeicherten String wird ein Listen-Element mit der nächsten
+     // Fehlermeldung angehangen.
      $errors .= "<li>{$the_error}</li>";
    }
 
-   $errors .= "</ul></p>";
+   // Die in $errors gespeicherte Liste wird mit dem </ul>-Tag geschlossen.
+   $errors .= "</ul>";
+   // Die gesamte Fehler-Liste wird zurückgegeben.
    return $errors;
  }
 
 
 
 /**
- * @flashMessage(): Eine Funktion, die Fehler- bzw. Erfolgsnachrichten ausgibt.
+ * @flashMessage(): Eine Funktion, die einen String mit der auszugebenden Nachricht und den Indikator $passOrFail
+ * (für Erfolgsnachricht "Pass", für Fehlermeldung nichts [weil "Fail" Default-Value ist]) übergeben bekommt die
+ * und anhand dieses Strings eine Fehler- bzw. Erfolgsnachrichten erzeugt und zurückgibt.
  *
  * @$message: Die auszugebende Fehler-/Erfolgsnachricht.
  * @$passOrFail: gibt an, ob es sich um eine Fehler- oder Erfolgsnachricht handelt. "Fail" ist dabei das Default-Value.
- * @$data: eine Variable, in der die Erfolgs- bzw. Fehlernachrichten gespeichert werden.
+ * @$alert: eine Variable, in der die Erfolgs- bzw. Fehlernachrichten gespeichert werden.
  *
  * @return: gibt die Fehler- bzw. Erfolgsnachricht zurück.
  */
 function flashMessage ($message, $passOrFail = "Fail") {
 
-  // Wenn die Operation erfolgreich war, wird eine Erfolgsnachricht erzeugt
+  // Wenn $passOrFail auf "Pass" steht,
   if ($passOrFail === "Pass") {
 
-    $data = "<div class='alert alert-success' role='alert' id='login_system_alertbox'>{$message}";
-    // Wenn die Operation nicht erfolgreich war, wird eine Fehlernachricht erzeugt
+    // wird eine Erfolgsmeldung ausgegeben.
+    $alert = "<div class='alert alert-success' role='alert' id='login_system_alertbox'>{$message}";
+
+    // Wenn $passOrFail auf "Fail" steht,
   } else {
 
-    $data = "<div class='alert alert-danger' role='alert' id='login_system_alertbox'>{$message}";
+    // wird eine Fehlermeldung ausgegeben.
+    $alert = "<div class='alert alert-danger' role='alert' id='login_system_alertbox'>{$message}";
   }
 
-  return $data;
+  // Die Erfolgs- bzw. Fehlermeldung wird zurückgegeben.
+  return $alert;
 }
 
 
@@ -192,12 +209,13 @@ function flashMessage ($message, $passOrFail = "Fail") {
 /**
  * @redirectTo(): eine Funktion, die einen Redirect vornimmt.
  *
- * @header():
+ * @header(): Sendet einen HTTP-Header in Rohform.
  *
  * @$page: die Seite zu der redirected werden soll.
  */
 function redirectTo($page) {
 
+  // Redirected den Benutzer zu der in $page definierten Seite.
   header("Location: {$page}.php");
 }
 
@@ -205,8 +223,9 @@ function redirectTo($page) {
 
 /**
  * @checkDuplicateEntries(): eine Funktion die anhand der vier Parameter
- * $table, $column_name, $value und $db das Registrierungsformular auf doppelte
- * Einträge überprüft.
+ * $table, $column_name, $value und $db die Eingaben aus dem  Registrierungsformular
+ * mit der Datenbank abgleicht, prüft, ob es Dopplungen gibt und ggf. eine
+ * Fehlermeldung zurückgibt.
  *
  * @$db->prepare():
  * @$statement->execute():
@@ -214,31 +233,43 @@ function redirectTo($page) {
  *
  * @$table: der Name des Datenbank-Tables, der überprüft werden soll.
  * @$column_name: der Name der Table-Spalte, die überprüft werden soll.
- * @$value: der Names des Formular-Feldes, das überprüft werden soll.
+ * @$value: der Name des Formular-Feldes, das überprüft werden soll.
  * @$db: das Datenbank-Objekt.
  * @$sqlQuery: eine Variable in der das SQL-Statement erzeugt wird.
  * @$statement: eine Variable, in der das SQL-Statement vorbereitet wird.
- * @$row:
- * @$result:
+ * @$row: eine Variable in der das Ergebnis von $statement->fetch() gespeichert wird.
+ * @$result: eine Variable in der eine Fehlermeldung, die mit der flashMessage()-Funktion
+ * erzeugt wurde, gespeichert wird.
  *
- * @return:
+ * @return: wird kein doppelter Datenbank-Eintrag gefunden, wird false zurückgegeben. Wird
+ * ein doppelter Datenbank-Eintrag gefunden, wird true zurückgegeben.
  */
 function checkDuplicateEntries ($table, $column_name, $value, $db) {
 
   try {
 
+    // Eine Variable in der das SQL-Statement zusammengesetzt wird.
     $sqlQuery = "SELECT * FROM " .$table. " WHERE " .$column_name. " =:$column_name";
+    // Eine Variable in der ein Statement zur Ausführung vorbereitet und das Statement-Objekt gespeichert wird.
     $statement = $db->prepare($sqlQuery);
+    // Das Statement wird ausgeführt.
     $statement->execute(array(":$column_name" => $value));
 
+    // Wenn $statement->fetch() einen Rückgabewert liefert,
     if ($row = $statement->fetch()) {
 
+      // wird kein doppelter Datenbank-Eintrag gefunden, wird false zurückgegeben.
       return true;
     }
 
+    // wird ein doppelter Datenbank-Eintrag gefunden, wird true zurückgegeben.
     return false;
+
+    // Jegliche PDOException werden abgefangen.
   } catch (PDOException $ex) {
 
+    // In der Variablen $result wird im Falle von PDOExceptions mit Hilfe der
+    // flashMessage()-Funktion eine Fehlermeldung gespeichert.
     $result = flashMessage("Fehlgeschlagen: " . $ex->getMessage());
   }
 
