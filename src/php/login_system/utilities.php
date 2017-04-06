@@ -1,62 +1,88 @@
 <?php
 /**
- * @check_empty_fields():
+ * @check_empty_fields(): eine Funktion, die anhand eines Arrays mit allen Pflichpfeldern
+ * ($required_fields_array) prüft, ob alle Pflichfelder ausgefüllt wurden und, wenn
+ * dies nicht so ist, das nicht ausgefüllte Pflichfeld zusammen mit einer Fehlermeldung
+ * in einem Array ($form_errors) speichert und dieses Array zurückgibt, wenn alle Felder
+ * überprüft wurden.
  *
- * @isset():
+ * @!isset(): überprüft, ob $_POST[$name_of_field] nicht gesetzt wurde oder
+ * $_POST[$name_of_field] gleich NULL ist und speichert, wenn dies der Fall sein sollte,
+ * das nicht ausgefüllte Pflichfeld zusammen mit einer Fehlermeldung
+ * in einem Array ($form_errors)
  *
- * @$form_errors: ein Array, in das alle nicht ausgefüllten Pflichfelder gespeichert werden.
+ * @$form_errors: ein Array, in das alle nicht ausgefüllten Pflichfelder zusammen mit einer Fehlermeldung
+ * gespeichert werden.
  * @$required_fields_array: ein Array, welches eine Liste der Pflichpfelder enthält.
- * @$name_of_field:
- * @$_POST:
+ * @$name_of_field: eine Variable in der der Wert von $required_fields_array (also
+ * immer der Name eines Pflichfelds) bei jedem Durchlauf der foreach-Schleife gespeichert werden.
+ * @$_POST: ein assoziatives Array, welches als Key die Namen der Formularfelder (u.a.) hat und zu
+ * jedem dieser Formularfelder den eingetragenen Wert speichert oder übermittelt, dass
+ * der Wert für das Feld nicht gesetzt wurde (also das Feld nicht ausgefüllt wurde).
  *
  * @return: gibt ein Array mit allen nicht ausgefüllten Pflichpfeldern zurück.
  */
 function check_empty_fields ($required_fields_array) {
 
-  // Initialisierung eines Arrays in dem eventuelle Fehler gespeichert werden.
+  // Initialisierung eines Arrays in dem nicht ausgefüllte Pflichfelder mit einer Fehlermeldung
+  // gespeichert werden gespeichert werden.
   $form_errors = array();
 
-  // Loop durch das $required_fields_array.
+  // Loop durch das $required_fields_array-Array
   foreach ($required_fields_array AS $name_of_field) {
 
+    // Wenn das Feld nicht ausgefüllt wurde oder der Wert des Feldes NULL ist, wird das Feld
+    // zusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
     if (!isset($_POST[$name_of_field]) || $_POST[$name_of_field] == NULL) {
       $form_errors[] = $name_of_field . " ist ein Pflichtfeld";
     }
 
   }
-
+  // Gibt das $form_errors-Array mit allen darin gespeicherten Fehlern zurück.
   return $form_errors;
 }
 
 
 
 /**
- * @check_min_length():
+ * @check_min_length(): eine Funktion, die anhand eines assoziativen Arrays mit den Namen aller
+ * Pflichfelder als Key und der Mindestanzahl an eingegebenen Buchstaben als Value überprüft, ob
+ * der Benutzer genug Buchstaben in die entsprechenden Felder eingetragen hat.
  *
- * @strlen():
- * @trim():
+ * @strlen(): gibt die länge der im jeweiligen Feld eingetragenen Zeichenkette zurück.
+ * @trim(): entfernt Whitespaces am Anfang und Ende des eingegebenen Strings.
  *
  * @$fields_to_check_length: ein assoziatives Array, das die Namen aller Felder enthält
  * und die dazugehörige Mindestlänge z.B. array = ("username" => 2, "email" => 12).
- * @$form_errors:
- * @$name_of_field:
- * @$minimum_length_required:
- * @$_POST:
+ * @$form_errors: ein Array, in das alle Felder, in die nicht die Mindestanzahl an Buchstaben eingegeben wurde,
+ * zusammen mit einer Fehlermeldung gespeichert werden.
+ * @$name_of_field: eine Variable in der der Wert von $required_fields_array (also
+ * immer der Name eines Feldes mit Mindestanzahl an Zeichen) bei jedem Durchlauf der foreach-Schleife
+ * gespeichert wird.
+ * @$minimum_length_required: die Mindestanzahl an Zeichen, die in das jeweilige Feld eingetragen werden müssen.
+ * @$_POST: ein assoziatives Array, welches als Key die Namen der Formularfelder (u.a.) hat und zu
+ * jedem dieser Formularfelder den eingetragenen Wert als Value speichert oder übermittelt, dass
+ * der Wert für das Feld nicht gesetzt wurde (also das Feld nicht ausgefüllt wurde).
  *
  * @return: gibt ein Array mit allen Fehlern aus.
  */
 function check_min_length ($fields_to_check_length) {
 
+  // Initialisierung eines Arrays in dem alle Felder, deren eingegebene Zeichenkette nicht lang genug ist,
+  // zusammen mit einer Fehlermeldung gespeichert werden.
   $form_errors = array();
 
+  // Loop durch das $fields_to_check_length-Array
   foreach ($fields_to_check_length AS $name_of_field => $minimum_length_required) {
 
+    // Wenn vom Benutzer weniger Zeichen in ein Feld mit Mindestanzahl an Zeichen eingetragen wurden als nötig, wird der
+    // Name des Feldes zusammen mit einer Fehlermeldung in das $form_errors-Array gespeichert.
     if (strlen(trim($_POST[$name_of_field])) < $minimum_length_required) {
       $form_errors[] = $name_of_field . " muss mindestens aus {$minimum_length_required} Zeichen bestehen.";
     }
-    
-  }
 
+  }
+  // Gibt das $form_errors-Array mit allen darin gespeicherten Fehlern zurück.
   return $form_errors;
 }
 
@@ -65,10 +91,10 @@ function check_min_length ($fields_to_check_length) {
 /**
  * @check_email():
  *
- * @array_key_exists():
+ * @array_key_exists(): überprüft, ob ein bestimmter Key (hier: "E-Mail") in einem Array existiert.
  * @filter_var():
  *
- * @$data: enthält ein assoziatives Array in dem Key der Name des zu prüfenden
+ * @$data: enthält ein assoziatives Array in dem als Key der Name des zu prüfenden
  * Form-Elements (hier "email") und Value die vom Nutzer eingegebene Zeichenfolge ist.
  * @$form_errors:
  * @$key:
