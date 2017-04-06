@@ -21,7 +21,7 @@ if(isset($_POST["E-Mail"])) {
   $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
 
   // Ruft die Funktion check_email() auf und merged die Rückgabewerte in das $form_errors Array.
-  $form_errors = array_merge($form_errors, check_email($_POST));
+  $form_errors = array_merge($form_errors, check_email());
 
   /**
    * Fragt ab, ob das Registrierungs-Formular abgeschickt wurde und speichert

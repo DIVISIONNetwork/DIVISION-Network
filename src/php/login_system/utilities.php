@@ -92,38 +92,49 @@ function check_min_length ($fields_to_check_length) {
  * @check_email():
  *
  * @array_key_exists(): überprüft, ob ein bestimmter Key (hier: "E-Mail") in einem Array existiert.
- * @filter_var():
+ * @filter_var(): Filter einer Variablen (hier: $key) mit einem angegebenen Filter
+ * @FILTER_SANITIZE_EMAIL: Filter um E-Mail-Adressen zu bereinigen. Entfernt alle Zeichen außer
+ * Buchstaben, Zahlen und !#$%&'*+-/=?^_`{|}~@.[].
+ * @FILTER_VALIDATE_EMAIL: Prüft, ob es sich um eine gülitige E-Mail-Adresse handelt.
  *
- * @$data: enthält ein assoziatives Array in dem als Key der Name des zu prüfenden
- * Form-Elements (hier "email") und Value die vom Nutzer eingegebene Zeichenfolge ist.
+ * @$data: enthält ein assoziatives Array (hier: $_POST mit den Formulardaten) in dem als Key der Name des zu prüfenden
+ * Form-Elements (hier "E-Mail") und als Value die vom Nutzer eingegebene Zeichenfolge gespeichert ist.
  * @$form_errors:
  * @$key:
  * @$_POST:
  *
  * @return: gibt ein Array mit dem E-Mail-Error aus.
  */
-function check_email ($data) {
+ function check_email () {
 
-  $form_errors = array();
-  $key = "E-Mail";
+   // Initialisierung eines Arrays in das bei einer nicht gültigen E-Mail-Adresse die E-Mail-Adresse und eine
+   // Fehlermeldung gespeichert werden.
+   $form_errors = array();
+   // $key wird als "E-Mail" definiert
+   $key = "E-Mail";
 
-  if (array_key_exists($key, $data)) {
+   // Wenn der Key ($key) im Array ($data) existiert
+   if (array_key_exists($key, $_POST)) {
 
-    if ($_POST[$key] != NULL) {
+     // Wenn für $_POST[$key] ein Wert existiert
+     if ($_POST[$key] != NULL) {
 
-      $key = filter_var($key, FILTER_SANITIZE_EMAIL);
+       // Wird $key auf die bereinigte E-Mail-Adresse gesetzt
+       $email = filter_var($_POST[$key], FILTER_SANITIZE_EMAIL);
 
-      if (filter_var($_POST[$key], FILTER_VALIDATE_EMAIL) === false) {
+       // Wenn es sich um keine gültige E-Mail-Adresse handelt
+       if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 
-        $form_errors[] = $key . " ist keine gültige E-Mail Adresse.";
-      }
+         // Wird die E-Mail-Adresse zusammen mit einer Fehlermeldung ins $form_errors-Array gespeichert.
+         $form_errors[] = $email . " ist keine gültige E-Mail Adresse.";
+       }
 
-    }
+     }
 
-  }
-
-  return $form_errors;
-}
+   }
+   // Gibt das $form_errors-Array mit allen darin gespeicherten Fehlern zurück.
+   return $form_errors;
+ }
 
 
 
