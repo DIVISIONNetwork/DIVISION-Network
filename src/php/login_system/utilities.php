@@ -227,9 +227,10 @@ function redirectTo($page) {
  * mit der Datenbank abgleicht, prüft, ob es Dopplungen gibt und ggf. eine
  * Fehlermeldung zurückgibt.
  *
- * @$db->prepare():
- * @$statement->execute():
- * @$statement->fetch():
+ * @$db->prepare(): Bereitet das in $sqlQuery gespeicherte Statement zur Ausführung vor und gibt ein
+ * Statement-Objekt zurück.
+ * @$statement->execute(): Führt dass durch $db->prepare() vorbereitete Statement aus.
+ * @$statement->fetch(): ??????????????????????????????
  *
  * @$table: der Name des Datenbank-Tables, der überprüft werden soll.
  * @$column_name: der Name der Table-Spalte, die überprüft werden soll.
@@ -278,17 +279,21 @@ function checkDuplicateEntries ($table, $column_name, $value, $db) {
 
 
 /**
- * @rememberMe():
+ * @rememberMe(): eine Funktion, die die User ID übergeben bekommt und diese verschlüsselt als Cookie
+ * der nach 30 Tagen verfällt speichert.
  *
- * @base64_encode():
- * @setCookie():
- * @time():
+ * @base64_encode(): PHP-Funktion, die die User ID MIME base64 codiert, damit die Benutzerdaten
+ * verschlüsselt sind.
+ * @setCookie(): PHP-Funktion, die einen Cookie setzt.
+ * @time(): gibt den aktuellen Unix-Timestamp (Sekunden seit Beginn der Unix-Epoche
+ * [Januar 1 1970 00:00:00 GMT]) zurück.
  *
- * @$user_id:
- * @$encryptCookieData:
+ * @$user_id: Parameter, der der Funktion übergeben wird und dann in der Funktion verschlüsselt wird.
+ * @$encryptCookieData: Variable, in der die verschlüsselte User ID gespeichert wird.
  */
 function rememberMe ($user_id) {
 
+  // Die User ID wird verschlüsselt und in der Variablen $encryptCookieData gespeichert
   $encryptCookieData = base64_encode("Uh5R5tfzU3JüU1qHf9tFSTQR{$user_id}");
   // Cookie an der Stelle rememberUserCookie auf $encryptCookieData gesetzt und läuft in 30 Tagen ab.
   setCookie("rememberUserCookie", $encryptCookieData, time()+60*60*24*100, "/");
@@ -299,19 +304,21 @@ function rememberMe ($user_id) {
 /**
  * @isCookieValid():
  *
- * @base64_decode():
- * @explode():
- * @$db->prepare():
- * @execute():
- * @fetch():
- * @signout():
+ * @base64_decode(): PHP-Funktion, die die MIME base64 verschlüsselten Daten dekodiert.
+ * @explode(): PHP-Funktion, die einen String in die angegebenen Teil zerlegt in ein Array speichert.
+ * @$db->prepare(): PHP-Funktion, die das in $sqlQuery gespeicherte Statement zur Ausführung vorbuereitet und ein
+ * Statement-Objekt zurückgibt.
+ * @execute(): führt dass durch $db->prepare() vorbereitete Statement aus.
+ * @fetch(): ??????????????????????????????
+ * @signout(): ??????????????????????????????
  *
- * @$db:
- * @$isValid:
- * @$decryptCookieData:
- * @$user_id:
- * @$userID:
- * @$sqlQuery:
+ * @$db: das Datenbank-Objekt.
+ * @$isValid: eine Variable in der gespeichert wird, ob der Cookie gültig ("true") oder ungültig ("false") ist.
+ * @$decryptCookieData: eine Variable, in der die durch base64_decode dekodierten Daten (hier: die User ID) gespeichert werden.
+ * @$user_id: eine Variable in der das durch die explode()-Funktion erzeugte Array, welches die User ID enthält
+ * gespeichert wird.
+ * @$userID: eine Variable in der die unverschlüsselte User ID gespeichert wird.
+ * @$sqlQuery: eine Variable in der das SQL-Statement erzeugt wird.
  * @$statement:
  * @$row:
  * @$id:
