@@ -1,57 +1,89 @@
 <?php
-if(isset($_POST['login_button'])) {
 
-    // Initialisiert ein Array in dem alle Fehlermeldungen gespeichert werden.
+// Wenn der Login-Button gedrückt wurde,
+if (isset($_POST['login_button'])) {
+
+    // wird ein Array in dem alle Fehlermeldungen gespeichert werden initialisiert,
     $form_errors = array();
 
-    // Definiert alle Pflichfelder, die zu überprüfen sind.
+    // werden alle Pflichfelder, die zu überprüfen sind, definiert.
     $required_fields = array('Benutzername', 'Passwort');
 
-    // Ruft die Funktion check_empty_fields() auf und merged die Rückgabewerte in das $form_errors Array.
+    // wird die Funktion check_empty_fields() aufgerufen und die Rückgabewerte werden in das $form_errors Array gemerged.
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
-    if(empty($form_errors)){
+    // Wenn außerdem das $form_errors-Array leer ist (also keine Fehler vorliegen),
+    if (empty($form_errors)){
 
-       /**
-        * Fragt ab, ob das Registrierungs-Formular abgeschickt wurde und speichert
-        * dann die Variablen aus dem Array in einzelnen Variablen ab.
-        */
+        // wird $username auf $_POST['Benutzername']
         $username = $_POST['Benutzername'];
+        // und $password auf $_POST['Passwort'] gesetzt.
         $password = $_POST['Passwort'];
 
-        isset($_POST["remember"]) ? $remember = $_POST["remember"] : $remember = "";
+        // Wenn auch $_POST["remember"] ("Remember me"-Funktion) gesetzt ist,
+        if (isset($_POST["remember"])) {
+          // wird $remember auf $_POST["remember"] (also: "yes") gesetzt.
+          $remember = $_POST["remember"];
+        } else {
+          // Sonst wird $remember auf einen leeren String gesetzt.
+          $remember = "";
+        }
 
-        // Überprüft, ob der Eintrag bereits in der Database existiert.
+        // Es wird ein SQL-Statement in der Variablen $sqlQuery zusammengesetzt.
         $sqlQuery = "SELECT * FROM users WHERE username = :username";
+        // Das SQL-Statement wird mit prepare($sqlQuery) vorbereitet.
         $statement = $db->prepare($sqlQuery);
+        // Das SQL-Statement wird ausgeführt.
         $statement->execute(array(':username' => $username));
 
-       while ($row = $statement->fetch()){
-           $id = $row['id'];
-           $hashed_password = $row['password'];
-           $username = $row['username'];
+        // Wenn $statement->fetch() einen Rückgabewert liefert, wird die gefetchte Row in $row gespeichert,
+        if ($row = $statement->fetch()) {
 
-           if (password_verify($password, $hashed_password)){
-               $_SESSION['id'] = $id;
-               $_SESSION['username'] = $username;
+          // wird $id auf $row['id'] (die User-ID) gesetzt,
+          $id = $row['id'];
+          // wird $hashed_password auf $row['password'] (das gehashte Passwort) gesetzt
+          $hashed_password = $row['password'];
+          // und wird $username auf $row['username'] (den Benutzernamen) gesetzt.
+          $username = $row['username'];
 
-               if ($remember === "yes") {
-                 rememberMe($id);
-               }
+          // Wenn password_verify() true zurückgibt (also $password [das eingegebene Passwort] und
+          // $hashed_password[das in der Database gespeicherte Passwort] übereinstimmen),
+          if (password_verify($password, $hashed_password)){
 
-               redirectTo("index");
-           } else {
+            // wird $_SESSION['id'] auf die User-ID gesetzt
+            $_SESSION['id'] = $id;
+            // und wird $_SESSION['username'] auf den Benutzernamen gesetzt.
+            $_SESSION['username'] = $username;
+
+            // Wenn außerdem $remember auf "yes" gesetzt ist,
+            if ($remember === "yes") {
+
+              // wird auf dem PC des Benutzers eine Cookie mit der verschlüsselten User-ID angelegt, der nach 30 Tagen verfällt.
+              rememberMe($id);
+            }
+
+            // Und der Benutzer wird zur Startseite redirectet.
+            redirectTo("index");
+
+            // Wenn password_verify() false zurückgibt (also $password [das eingegebene Passwort] und
+            // $hashed_password[das in der Database gespeicherte Passwort] nicht übereinstimmen),
+          } else {
+            // wird eine Fehlermeldung ausgegeben.
             $result = flashMessage("Benutzername oder Passwort nicht korrekt!");
-           }
+         }
        }
-
-    } else {
-        if (count($form_errors) == 1) {
-          $result = flashMessage("Eine deiner Angaben ist nicht korrekt:");
+       // Wenn das $form_errors-Array nicht leer ist (also Fehler vorliegen),
+     } else {
+       // und nur ein Fehler vorliegt,
+       if (count($form_errors) == 1) {
+         // wird die Fehlermeldung für einen Fehler ausgegeben.
+         $result = flashMessage("Eine deiner Angaben ist nicht korrekt:");
+         // Sonst,
         } else {
+          // wird die Fehlermeldung für mehrere Fehler ausgegeben.
           $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
         }
     }
 }
 
- ?>
+?>

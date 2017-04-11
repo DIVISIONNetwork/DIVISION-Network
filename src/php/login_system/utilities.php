@@ -279,8 +279,8 @@ function checkDuplicateEntries ($table, $column_name, $value, $db) {
 
 
 /**
- * @rememberMe(): eine Funktion, die die User ID übergeben bekommt und diese verschlüsselt als Cookie
- * der nach 30 Tagen verfällt speichert.
+ * @rememberMe(): eine Funktion, die die User ID übergeben bekommt und diese verschlüsselt - als Cookie
+ * der nach 30 Tagen verfällt - speichert.
  *
  * @base64_encode(): PHP-Funktion, die die User ID MIME base64 codiert, damit die Benutzerdaten
  * verschlüsselt sind.
@@ -293,7 +293,7 @@ function checkDuplicateEntries ($table, $column_name, $value, $db) {
  */
 function rememberMe ($user_id) {
 
-  // Die User ID wird verschlüsselt und in der Variablen $encryptCookieData gespeichert
+  // Die User-ID wird verschlüsselt und in der Variablen $encryptCookieData gespeichert
   $encryptCookieData = base64_encode("Uh5R5tfzU3JüU1qHf9tFSTQR{$user_id}");
   // Cookie an der Stelle rememberUserCookie auf $encryptCookieData gesetzt und läuft in 30 Tagen ab.
   setCookie("rememberUserCookie", $encryptCookieData, time()+60*60*24*100, "/");
@@ -309,7 +309,7 @@ function rememberMe ($user_id) {
  * @$db->prepare(): PHP-Funktion, die das in $sqlQuery gespeicherte Statement zur Ausführung vorbuereitet und ein
  * Statement-Objekt zurückgibt.
  * @execute(): führt dass durch $db->prepare() vorbereitete Statement aus.
- * @fetch(): ??????????????????????????????
+ * @fetch(): fetchet die nächste Row des angehängten Statements (hier: $statement).
  * @signout(): ??????????????????????????????
  *
  * @$db: das Datenbank-Objekt.
@@ -319,73 +319,102 @@ function rememberMe ($user_id) {
  * gespeichert wird.
  * @$userID: eine Variable in der die unverschlüsselte User ID gespeichert wird.
  * @$sqlQuery: eine Variable in der das SQL-Statement erzeugt wird.
- * @$statement:
- * @$row:
- * @$id:
- * @$username:
- * @$_COOKIE:
- * @$_SESSION:
+ * @$statement: eine Variable, in der das SQL-Statement vorbereitet wird.
+ * @$row: die nächste Reihe, die durch fetch() geholt wurde.
+ * @$id: eine Variable in der die User-ID aus der gefetchten Row gespeichert wird.
+ * @$username: eine Variable in der der Benutzername aus der gefechten Row gespeichert wird.
+ * @$_COOKIE: ein assoziatives Array von Variablen, die dem aktuellen Skript mittels HTTP-Cookies übergeben werden.
+ * @$_SESSION: ein assoziatives Array, das die Sessionvariablen enthält und dem aktuellen Skript zur Verfügung stellt.
  *
  * @return:
  */
 function isCookieValid ($db) {
 
+  // $isValid wird auf false gesetzt
   $isValid = false;
 
+  // Wenn $_COOKIE["rememberUserCookie"] gesetzt ist,
   if (isset($_COOKIE["rememberUserCookie"])) {
 
+    // werden die Daten in $_COOKIE["rememberUserCookie"] entschlüsselt und in $decryptCookieData gespeichert,
     $decryptCookieData = base64_decode($_COOKIE["rememberUserCookie"]);
+    // wird ein Array erzeugt in dem an Position 0 der Verschlüsselungszusatz und an Position 1 die entschlüsselte
+    // User-ID gespeichert wird,
     $user_id = explode("Uh5R5tfzU3JüU1qHf9tFSTQR", $decryptCookieData);
+    // wird die $userID auf die entschlüsselte User-ID gesetzt,
     $userID = $user_id[1];
+    // wird eine SQL-Statement zusammengesetzt, welches nach dem Benutzer mit der entsprechenden User-ID in der Datenbank sucht,
     $sqlQuery = "SELECT * FROM users WHERE id = :id";
+    // wird das SQL-Statement vorbereitet,
     $statement = $db->prepare($sqlQuery);
+    // wird das SQL-Statement mit der User-ID ausgeführt.
     $statement->execute(array(":id" => $userID));
 
+    // Wenn außerdem $statement->fetch() eine Rückgabe liefert,
     if ($row = $statement->fetch()) {
 
+      // wird $id auf die ID des zurückgegebenen Benutzers gesetzt,
       $id = $row["id"];
+      // wird $username auf den Benutzernamen des zurückgegebenen Benutzers gesetzt,
       $username = $row["username"];
+      // wird die User-ID in der Session abgespeichert,
       $_SESSION["id"] = $id;
+      // wird der Benutzername in Session abgespeichert,
       $_SESSION["username"] = $username;
+      // und wird $isValid auf true gesetzt.
       $isValid = true;
+      // Sonst,
     } else {
 
+      // wird $isValid auf false gesetzt
       $isValid = false;
+      // und es werden alle Benutzerdaten aus den Cookies und Sessions enterfent und der
+      // Benutzer wird zur Startseite weitergeleitet.
       signout();
     }
 
   }
 
+  // $isValid wird zurückgegeben.
   return $isValid;
 }
 
 
 
 /**
- * @signout():
+ * @signout(): eine Funktion, die alle Benutzerdaten aus den Cookies und Sessions löscht und den Benutzer zur
+ * Startseite weiterleitet.
  *
- * @unset():
- * @setCookie():
- * @session_destroy():
- * @session_regenerate_id():
- * @redirectTo():
+ * @unset(): löscht die angegebene Variable.
+ * @setCookie(): PHP-Funktion, die einen Cookie setzt.
+ * @session_destroy(): löscht alle in einer Session registrierten Daten.
+ * @session_regenerate_id(): ersetzt die aktuelle Session-ID durch eine neu erzeugte.
+ * @redirectTo(): eine Funktion, die einen Redirect vornimmt.
  *
- * @$_COOKIE:
- * @$_SESSION:
+ * @$_COOKIE: ein assoziatives Array von Variablen, die dem aktuellen Skript mittels HTTP-Cookies übergeben werden.
+ * @$_SESSION: ein assoziatives Array, das die Sessionvariablen enthält und dem aktuellen Skript zur Verfügung stellt.
  */
 function signout () {
 
+  // $_SESSION["username"] wird gelöscht.
   unset($_SESSION["username"]);
+  // $_SESSION["id"] wird gelöscht.
   unset($_SESSION["id"]);
 
+  // Wenn $_COOKIE["rememberUserCookie"] gesetzt ist,
   if(isset($_COOKIE["rememberUserCookie"])) {
 
+    // wird $_COOKIE["rememberUserCookie"] gelöscht
     unset($_COOKIE["rememberUserCookie"]);
+    // und $_COOKIE["rememberUserCookie"] auf NULL gesetzt.
     setCookie("rememberUserCookie", NULL, -1, "/");
   }
 
+  // Die Session wird gelöscht.
   session_destroy();
+  // Es wird dem Benutzer eine neue Session-ID zugewiesen.
   session_regenerate_id(true);
+  // Der Benutzer wird auf die Startseite weitergeleitet.
   redirectTo("index");
 }
 ?>

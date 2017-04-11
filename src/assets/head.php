@@ -17,6 +17,9 @@
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/e04809d2c1.js"></script>
+  <!-- Sweetalert -->
+  <script src="./../src/assets/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./../src/assets/sweetalert.css">
   <!-- DIVISION Network Stylesheet -->
   <link rel="stylesheet" htype="text/css" href="./../src/css/styles.css">
   <!-- DIVISION Network Favicon -->

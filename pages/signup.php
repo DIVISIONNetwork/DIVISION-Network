@@ -58,3 +58,4 @@
     </div>
     <?php include_once("./../src/assets/widgets/chat_widget/chat_widget.php"); ?>
 </div>
+<?php include_once("./../src/assets/footer.php"); ?>

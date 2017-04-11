@@ -1,3 +1,4 @@
+<!-- Wenn der Benutzer nicht eingeloggt ist, wird das Login-Widget angezeigt. -->
 <?php if (!isset($_SESSION["username"])): ?>
   <div id="login_or_signup_container">
     <div class="form-group">
