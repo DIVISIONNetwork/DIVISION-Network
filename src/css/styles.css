@@ -915,3 +915,7 @@ a#show_login_again_text:hover {
 #remember_me_checkbox_text {
 	padding-right: 20px;
 }
+
+#esdit_profile_glyphicon {
+	color: #337ab7;
+}

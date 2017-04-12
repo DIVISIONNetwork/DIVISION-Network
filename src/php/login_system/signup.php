@@ -73,7 +73,19 @@ if(isset($_POST["E-Mail"])) {
         * UPDATE-Statement betroffenen Datenbank-Zeilen zurück.
         */
         if ($statement->rowCount() == 1) {
-          $result = flashMessage("Registrierung erfolgreich!", "Pass");
+
+          // Sweet Alert "Registrierung erfolgreich"
+          echo $welcome = "<script type=\"text/javascript\">
+                          swal({
+                          title: \"Registrierung erfolgreich!\",
+                          text: \"Wir haben dir eine E-Mail mit einem Aktivierungslink für deinen Account geschickt.\",
+                          type: \"success\",
+                          closeOnConfirm: false
+                          },
+                          function(){
+                            window.location.href = 'index.php';
+                          });
+                          </script>";
         }
 
       /**

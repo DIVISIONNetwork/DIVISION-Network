@@ -76,8 +76,18 @@ if (isset($_POST["password_reset_button"])) {
             // Führt das vorbereitete SQL-Statement aus.
             $statement->execute(array(":password" => $hashed_password, ":email" => $email));
 
-            // Gibt "Passwort wurde geändert" aus, wenn das Passwort erfolgreich geändert wurde.
-            $result = flashMessage("Passwort wurde geändert.", "Pass");
+            // Sweet Alert "Passwort wurde geändert"
+            echo $welcome = "<script type=\"text/javascript\">
+                            swal({
+                            title: \"Passwort wurde geändert!\",
+                            text: \"Du kannst dich jetzt mit deinem neuen Passwort anmelden.\",
+                            type: \"success\",
+                            closeOnConfirm: false
+                            },
+                            function(){
+                              window.location.href = 'index.php';
+                            });
+                            </script>";
           } else {
             // Gibt "Die von dir eingegebene E-Mail Adresse existiert nicht." aus, wenn keine übereinstimmende E-Mail Adresse gefunden wurde.
             $result = flashMessage("Die von dir eingegebene E-Mail Adresse existiert nicht.");

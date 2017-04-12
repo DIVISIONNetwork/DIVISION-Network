@@ -23,9 +23,7 @@
       et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </div>
   </div>
-  <div class="video_container_container">
     <a href="http://www.directupload.net/file/d/4670/ibiani9t_jpg.htm" target="_blank"><img src="http://fs5.directupload.net/images/170324/temp/ibiani9t.jpg" border="1" title="Kostenlos Bilder und Fotos hochladen"></a>
-  </div>
   <div class="row post_interaction_row">
     <button type="button" class="btn btn-default btn-sm comment_btn">Kommentieren (3)</button>
     <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>

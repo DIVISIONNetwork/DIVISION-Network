@@ -1,9 +1,9 @@
 <?php $page_title = "Anmelden - DIVISION Network" ?>
 <?php include_once("./../src/php/login_system/session.php"); ?>
 <?php include_once("./../src/php/login_system/database_connection.php"); ?>
+<?php include_once("./../src/assets/head.php"); ?>
 <?php include_once("./../src/php/login_system/utilities.php"); ?>
 <?php include_once("./../src/php/login_system/login.php"); ?>
-<?php include_once("./../src/assets/head.php"); ?>
 <?php include_once("./../src/assets/header.php"); ?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>

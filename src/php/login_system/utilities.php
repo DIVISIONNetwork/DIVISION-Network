@@ -310,7 +310,8 @@ function rememberMe ($user_id) {
  * Statement-Objekt zurückgibt.
  * @execute(): führt dass durch $db->prepare() vorbereitete Statement aus.
  * @fetch(): fetchet die nächste Row des angehängten Statements (hier: $statement).
- * @signout(): ??????????????????????????????
+ * @signout(): eine Funktion, die alle Benutzerdaten aus den Cookies und Sessions löscht und den Benutzer zur
+ * Startseite weiterleitet.
  *
  * @$db: das Datenbank-Objekt.
  * @$isValid: eine Variable in der gespeichert wird, ob der Cookie gültig ("true") oder ungültig ("false") ist.
@@ -417,4 +418,65 @@ function signout () {
   // Der Benutzer wird auf die Startseite weitergeleitet.
   redirectTo("index");
 }
+
+/**
+ * @guard: eine Sicherheits-Funktion, die überprüft, ob der aktuelle Fingerprint des Benutzers mit dem in der Session
+ * gespeicherten Fingerprint übereinstimmt und den Benutzers ausloggt, wenn dies nicht der Fall ist.
+ *
+ * @$isValid: eine Variable, in der gespeichert wird, ob der Fingerprint (noch) gültig ist oder nicht.
+ * @$inactive: eine Variable, in der die Zeit definiert wird bis ein Benutzer als inaktiv gilt.
+ * @$fingerprint: eine Variable, in der der Fingerprint des Benutzers (bestehend aus IP-Adresse und Browser) gespeichert wird.
+ * @signout(): eine Funktion, die alle Benutzerdaten aus den Cookies und Sessions löscht und den Benutzer zur
+ * Startseite weiterleitet.
+ *
+ * @md5(): Errechnet (verschlüsselt) den MD5-Hash eines Strings.
+ * @$_SERVER: Informationen über Server und Ausführungsumgebung.
+ * @REMOTE_ADDR: Die IP-Adresse des Nutzers.
+ * @HTTP_USER_AGENT: Der vom Benutzer verwendete Browser.
+ * @$_SESSION: ein assoziatives Array, das die Sessionvariablen enthält und dem aktuellen Skript zur Verfügung stellt.
+ * @time(): gibt den aktuellen Unix-Timestamp (Sekunden seit Beginn der Unix-Epoche
+ * [Januar 1 1970 00:00:00 GMT]) zurück.
+ *
+ * @return: gibt $isValid zurück.
+ */
+ function guard () {
+
+   // $isValid wird auf true gesetzt.
+   $isValid = true;
+   // $inactive (die Zeit bis der Benutzer als inaktiv gilt) wird auf 60 Minuten gesetzt.
+   $inactive = 60 * 60;
+   // Zum vergelich mit dem im Header erzeigen Fingerprint wird die IP-Adresse des Benutzers und der
+   // Browser des Benutzers verschlüsselt in $fingerprint gespeichert.
+   $fingerprint = md5($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"]);
+
+   // Wenn $_SESSION["fingerprint"] gesetzt ist aber $_SESSION["fingerprint"] nicht gleich $fingerprint (Fingerprint aus dieser Funktion) ist,
+   if ((isset($_SESSION["fingerprint"]) && $_SESSION["fingerprint"] != $fingerprint)) {
+
+     // wird $isValid auf false gesetzt und
+     $isValid = false;
+     // der Benutzer ausgeloggt.
+     signout();
+
+     // Sonst, wenn $_SESSION["last_active"] gesetzt ist und die aktuelle Zeit - $_SESSION["last_active"] größer als $inactive (60 min)
+     // ist und der Benutzer eingeloggt ist,
+   } elseif ((isset($_SESSION["last_active"]) && (time() - $_SESSION["last_active"]) > $inactive) && $_SESSION["username"]) {
+
+     // wird $isValid auf false gesetzt und
+     $isValid = false;
+     // der Benutzer ausgeloggt.
+     signout();
+
+     // Sonst,
+   } else {
+
+     // wird $_SESSION["last_active"] auf die aktuelle Zeit gesetzt (refresht $_SESSION["last_active"]).
+     $_SESSION["last_active"] = time();
+
+   }
+
+   // $isValid wird zurückgegeben.
+   return $isValid;
+ }
+
+
 ?>

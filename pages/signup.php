@@ -1,6 +1,6 @@
 <?php $page_title = "Registrieren - DIVISION Network" ?>
-<?php include_once("./../src/php/login_system/signup.php"); ?>
 <?php include_once("./../src/assets/head.php"); ?>
+<?php include_once("./../src/php/login_system/signup.php"); ?>
 <?php include_once("./../src/assets/header.php"); ?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>

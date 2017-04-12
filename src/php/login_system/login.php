@@ -55,6 +55,30 @@ if (isset($_POST['login_button'])) {
             // und wird $_SESSION['username'] auf den Benutzernamen gesetzt.
             $_SESSION['username'] = $username;
 
+            /**
+              * REMOTE_ADDR: Die IP-Adresse des Nutzers.
+              * HTTP_USER_AGENT: Der vom Benutzer verwendete Browser.
+              * md5(): Errechnet (verschlüsselt) den MD5-Hash eines Strings.
+              * $_SERVER: Informationen über Server und Ausführungsumgebung.
+              */
+            $fingerprint = md5($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"]);
+            $_SESSION["last_active"] = time();
+            $_SESSION["fingerprint"] = $fingerprint;
+
+            // Sweet Alert "Willkommen zurück"
+            echo $welcome = "<script type=\"text/javascript\">
+                            swal({
+                            title: \"Hallo {$username}!\",
+                            text: \"Du hast dich erfolgreich angemeldet.\",
+                            type: \"success\",
+                            timer: 3000,
+                            showConfirmButton: false });
+
+                            setTimeout(function(){
+                            window.location.href = 'index.php';
+                          }, 2000);
+                            </script>";
+
             // Wenn außerdem $remember auf "yes" gesetzt ist,
             if ($remember === "yes") {
 
@@ -62,8 +86,8 @@ if (isset($_POST['login_button'])) {
               rememberMe($id);
             }
 
-            // Und der Benutzer wird zur Startseite redirectet.
-            redirectTo("index");
+            // Und der Benutzer wird zur Startseite redirectet. (Wegen Sweet Alert deaktiviert.)
+            // redirectTo("index");
 
             // Wenn password_verify() false zurückgibt (also $password [das eingegebene Passwort] und
             // $hashed_password[das in der Database gespeicherte Passwort] nicht übereinstimmen),

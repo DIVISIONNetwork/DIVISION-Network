@@ -3,23 +3,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Die folgenden 3 Meta-Tags müssen als erste im Header erscheinen. Alles andere im Header muss nach diesen Meta-Tags kommen! -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <!-- DIVISION Network Meta -->
-  <title><?php if(isset($page_title)) echo $page_title; ?></title>
+  <title><?php if (isset($page_title)) {echo $page_title;} else {echo "DIVISION Network";} ?></title>
   <meta name="description" content="Social Network und YouTube-Blog">
   <meta name="author" content="DIVISION Network">
+  <!-- jQuery -->
+  <script src="./../src/jquery/jquery-3.2.1.min.js"></script>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./../src/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <script src="https://use.fontawesome.com/e04809d2c1.js"></script>
+  <link rel="stylesheet" href="./../src/font-awesome/css/font-awesome.min.css">
   <!-- Sweetalert -->
-  <script src="./../src/assets/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./../src/assets/sweetalert.css">
+  <script src="./../src/sweetalert/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./../src/sweetalert/sweetalert.css">
   <!-- DIVISION Network Stylesheet -->
   <link rel="stylesheet" htype="text/css" href="./../src/css/styles.css">
   <!-- DIVISION Network Favicon -->

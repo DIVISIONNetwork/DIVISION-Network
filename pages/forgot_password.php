@@ -1,9 +1,9 @@
 <?php $page_title = "Passwort vergessen - DIVISION Network" ?>
 <?php include_once("./../src/php/login_system/database_connection.php"); ?>
 <?php include_once("./../src/php/login_system/utilities.php"); ?>
-<?php include_once("./../src/php/login_system/forgot_password.php"); ?>
 <?php include_once("./../src/assets/head.php"); ?>
 <?php include_once("./../src/assets/header.php"); ?>
+<?php include_once("./../src/php/login_system/forgot_password.php"); ?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
     <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
