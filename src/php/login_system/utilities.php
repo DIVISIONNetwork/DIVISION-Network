@@ -479,4 +479,38 @@ function signout () {
  }
 
 
+
+
+ function isValidImage ($file) {
+
+   $form_errors = array();
+
+   $parts = explode(".", $file);
+
+   $extension = end($parts);
+
+   switch (strtolower($extension)) {
+     case "jpg":
+     case "jpeg":
+     case "png":
+
+     return $form_errors;
+   }
+
+   $form_errors[] = $extension . " ist keine zulässiges Dateiformat.";
+
+   return $form_errors;
+
+ }
+
+
+
+ function uploadProfilePicture ($username) {
+
+    
+
+ }
+
+
+
 ?>

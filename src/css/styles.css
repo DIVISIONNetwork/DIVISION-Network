@@ -919,3 +919,15 @@ a#show_login_again_text:hover {
 #esdit_profile_glyphicon {
 	color: #337ab7;
 }
+
+.profile_pic_container {
+	width: 200px;
+	height: 300px;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+.profile_pic {
+	height: 100%;
+	width: auto;
+}

@@ -12,6 +12,9 @@
           <p> Die Profile sind nur für Mitglieder sichtbar. <a href="login.php">Melde dich bitte an!</a><br /><br />
               Du bist noch kein Mitglied? <a href="signup.php">Registriere dich jetzt!</a></p>
         <?php else: ?>
+          <div class="profile_pic_container">
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" alt="Profile Picture" class="profile_pic img img-rounded">
+          </div>
           <table>
             <tr><th>Benutzername:</th><td><?php if (isset($username)) {echo $username;} ?></td></tr>
             <tr><th>E-Mail:</th><td><?php if (isset($email)) {echo $email;} ?></td></tr>
