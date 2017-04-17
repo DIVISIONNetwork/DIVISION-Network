@@ -507,7 +507,55 @@ function signout () {
 
  function uploadProfilePicture ($username) {
 
-    
+    $isImageMoved = false;
+
+    if ($_FILES["Profilbild"]["tmp_name"]) {
+
+      $temp_file = $_FILES["Profilbild"]["tmp_name"];
+
+      $dir_seperator = DIRECTORY_SEPARATOR;
+
+      $avatar_name = $username . ".jpg";
+
+      $path = "./../avatar_uploads" . $dir_seperator . $avatar_name;
+
+      if (move_uploaded_file($temp_file, $path)) {
+
+        $isImageMoved = true;
+
+      }
+
+    }
+
+    return $isImageMoved;
+
+ }
+
+
+
+ function uploadProfileBanner ($username) {
+
+    $isBannerMoved = false;
+
+    if ($_FILES["Profilbanner"]["tmp_name"]) {
+
+      $temp_file = $_FILES["Profilbanner"]["tmp_name"];
+
+      $dir_seperator = DIRECTORY_SEPARATOR;
+
+      $banner_name = $username . ".jpg";
+
+      $path = "./../banner_uploads" . $dir_seperator . $banner_name;
+
+      if (move_uploaded_file($temp_file, $path)) {
+
+        $isBannerMoved = true;
+
+      }
+
+    }
+
+    return $isBannerMoved;
 
  }
 

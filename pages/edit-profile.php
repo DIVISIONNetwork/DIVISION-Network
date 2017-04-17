@@ -30,6 +30,10 @@
                   <lable for="Profilbild">Profilbild</lable>
                   <input type="file" name="Profilbild" id="Profilbild">
                 </div>
+                <div class="form-group">
+                  <lable for="Profilbanner">Profilbanner</lable>
+                  <input type="file" name="Profilbanner" id="Profilbanner">
+                </div>
                 <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
                 <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button>
               </form>

@@ -1,4 +1,5 @@
 <?php include_once("./../src/php/login_system/utilities.php"); ?>
+<?php include_once("./../src/php/login_system/profile.php"); ?>
 <!-- Wenn der Benutzer eingeloggt ist wird der Header für eingeloggte Nutzer angezeigt. -->
 <?php if (isset($_SESSION["username"]) || isCookieValid($db)): ?>
   <nav class="navbar navbar-inverse navbar-fixed-top" id="header">
@@ -32,7 +33,7 @@
             <i class="hide"><?php echo guard(); ?></i>
             <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="index.php">Startseite</a></li>
             <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="blog.php">YouTube-Blog</a></li>
-            <li class="header_nav_li"><a href="profile.php"><img class="img-rounded hidden-xs" src="./../src/img/Profilbild.jpg" id="navbar_user_avatar"><?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; ?></a></li>
+            <li class="header_nav_li"><a href="profile.php"><img class="img-rounded hidden-xs" src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" id="navbar_user_avatar"><?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; ?></a></li>
             <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="nachrichten.php">Nachrichten</a></li>
             <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="mitglieder.php">Mitglieder</a></li>
             <li class="header_nav_li hidden-lg hidden-md hidden-sm"><a href="gruppen.php">Gruppen</a></li>

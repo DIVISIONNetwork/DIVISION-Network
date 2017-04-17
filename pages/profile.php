@@ -7,20 +7,24 @@
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
     <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
       <div class="profile_container">
-        <h1>Profil</h1>
         <?php if (!isset($_SESSION["username"])): ?>
           <p> Die Profile sind nur für Mitglieder sichtbar. <a href="login.php">Melde dich bitte an!</a><br /><br />
               Du bist noch kein Mitglied? <a href="signup.php">Registriere dich jetzt!</a></p>
         <?php else: ?>
-          <div class="profile_pic_container">
-            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" alt="Profile Picture" class="profile_pic img img-rounded">
+          <div class="banner_and_avatar_container">
+            <img src="<?php if (isset($profile_banner)) { echo $profile_banner; } ?>" alt="Profilbanner" class="profile_banner img">
+            <div class="profile_picture_container">
+              <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" alt="Profile Picture" class="profile_picture img img-thumbnail">
+            </div>
           </div>
-          <table>
-            <tr><th>Benutzername:</th><td><?php if (isset($username)) {echo $username;} ?></td></tr>
-            <tr><th>E-Mail:</th><td><?php if (isset($email)) {echo $email;} ?></td></tr>
-            <tr><th>Mitglied seit:</th><td><?php if (isset($join_date)) {echo $join_date;} ?></td></tr>
-            <tr><th></th><td><a class="pull-right" href="edit-profile.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"></span> Profil bearbeiten</a></td></tr>
-          </table>
+          <div class="user_profile_table_container">
+            <table class="user_profile_table">
+              <tr><th>Benutzername:</th><td><?php if (isset($username)) {echo $username;} ?></td></tr>
+              <tr><th>E-Mail:</th><td><?php if (isset($email)) {echo $email;} ?></td></tr>
+              <tr><th>Mitglied seit:</th><td><?php if (isset($join_date)) {echo $join_date;} ?></td></tr>
+              <tr><th></th><td><a class="pull-right" href="edit-profile.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"></span> Profil bearbeiten</a></td></tr>
+            </table>
+          </div>
         <?php endif ?>
       </div>
     </div>

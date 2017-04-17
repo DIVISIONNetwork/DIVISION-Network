@@ -34,16 +34,32 @@ if ((isset($_SESSION["id"]) || isset($_GET["user_identity"])) && !isset($_POST["
     $join_date = strftime("%d. %B %Y", strtotime($rs["join_date"]));
   }
 
-  $user_pic = "./../uploads/" . $username . ".jpg";
+  $user_pic = "./../avatar_uploads/" . $username . ".jpg";
 
-  $default_user_pic = "./../uploads/default.jpg";
+  $default_user_pic = "./../avatar_uploads/default_avatar.jpg";
 
   if (file_exists($user_pic)) {
 
     $profile_picture = $user_pic;
+
   } else {
 
     $profile_picture = $default_user_pic;
+
+  }
+
+  $user_banner = "./../banner_uploads/" . $username . ".jpg";
+
+  $default_user_banner = "./../banner_uploads/default_banner.jpg";
+
+  if (file_exists($user_banner)) {
+
+    $profile_banner = $user_banner;
+
+  } else {
+
+    $profile_banner = $default_user_banner;
+
   }
 
   // Dann wird die User-ID enkodiert (verschlüsselt).
@@ -80,6 +96,22 @@ if ((isset($_SESSION["id"]) || isset($_GET["user_identity"])) && !isset($_POST["
 
   }
 
+  if (isset($_FILES["Profilbanner"]["name"])) {
+
+    $banner = $_FILES["Profilbanner"]["name"];
+
+  } else {
+
+    $banner = NULL;
+
+  }
+
+  if ($banner != NULL) {
+
+    $form_errors = array_merge($form_errors, isValidImage($banner));
+
+  }
+
   $email = $_POST["E-Mail"];
 
   $username = $_POST["Benutzername"];
@@ -97,7 +129,7 @@ if ((isset($_SESSION["id"]) || isset($_GET["user_identity"])) && !isset($_POST["
 
       $statement->execute(array(":username" => $username, ":email" => $email, ":id" => $hidden_id));
 
-      if ($statement->rowCount() == 1) {
+      if ($statement->rowCount() == 1 || uploadProfileBanner($username) || uploadProfilePicture($username)) {
 
         $_SESSION["username"] = $username;
 
