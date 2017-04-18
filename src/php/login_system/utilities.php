@@ -419,6 +419,8 @@ function signout () {
   redirectTo("index");
 }
 
+
+
 /**
  * @guard: eine Sicherheits-Funktion, die überprüft, ob der aktuelle Fingerprint des Benutzers mit dem in der Session
  * gespeicherten Fingerprint übereinstimmt und den Benutzers ausloggt, wenn dies nicht der Fall ist.
@@ -481,121 +483,163 @@ function signout () {
 
 
  /**
-  * @isValidImage:
+  * @isValidImage: eine Funktion, die einen Dateipfad übergeben bekommt, das Dateiformat als String
+  * insoliert und dann prüft, ob es sich um ein zulässiges Dateiformat handelt.
   *
-  * @return:
+  * @explode(): PHP-Funktion, die einen String in die angegebenen Teil zerlegt in ein Array speichert.
+  * @end(): PHP-Funktion, die das letzte Elemenmt eines Arrays zurückgibt.
+  * @strtolower: PHP-Funktion, die einen String in Kleinbuchstaben umwandelt.
+  *
+  * @$form_errors: ein Array, in das bei falschem Dateiformat eine passende Fehlermeldung gespeichert wird.
+  * @$parts: ein Array, welches an [0] den "." speichert und an [1] das Dateiformat (z.B. jpg oder png).
+  * @$extension: eine Variable, in die das Dateiformat gespeichert wird.
+  *
+  * @return: liefert das $form_errors-Array als Rückgabewert.
   */
  function isValidImage ($file) {
 
-   //
+   // Initialisierung eines Arrays in dem alle in der Funktion erzeugten Fehlermeldungen bei ungültigen Dateiformaten gespeichert werden.
    $form_errors = array();
 
-   //
+   // Der Dateipfad wird mithilfe der explode()-Funktion in zwei Teile getrennt ("." + "Dateiformat") und beide Teile werden in einem Array gespeichert.
    $parts = explode(".", $file);
 
-   //
+   // Das Dateiformat wird isoliert in $extension gespeichert.
    $extension = end($parts);
 
-   //
+   // Wenn das in $extension gespeicherte Dateiformat einem der Fälle entspricht,
    switch (strtolower($extension)) {
      case "jpg":
      case "jpeg":
      case "png":
 
-     //
+     // wird das noch leere $form_errors-Array zurückgegeben.
      return $form_errors;
+
    }
 
-   //
+   // Sonst wird eine Fehlermeldung erzeugt und im $form_errors-Array gespeichert.
    $form_errors[] = $extension . " ist keine zulässiges Dateiformat.";
 
-   //
+   // Und das $form_errors-Array wird zurückgegeben.
    return $form_errors;
 
  }
 
 
+
  /**
-  * @uploadProfilePicture:
+  * @uploadProfilePicture: eine Funktion, die den Benutzernamen übergeben bekommt und das über das
+  * Formular übergebene Profilbild aus dem temporären Speicher in den gewünschten Ordner auf dem Server speichert.
   *
-  * @return:
+  * @DIRECTORY_SEPARATOR: entspricht Dateipfad-Separator ("\")
+  * @move_uploaded_file(): eine PHP-Funktion, die als Parameter den Namen der temporär auf dem Server gespeicherten Datei und das Zielverzeichnis übergeben bekommt.
+  * Die Funktion prüft, dass die mit $temp_file bezeichnete Datei eine gültige Upload-Datei ist (d.h., dass sie mittels PHP's HTTP POST Upload-Mechanismus hochgeladen wurde).
+  * Ist die Datei gültig, wird sie zum in $path bezeichneten Dateinamen verschoben.
+  *
+  * @$isImageMoved: eine Variable, die als Indikator dafür dient, ob das Bild erfolgreich auf dem Server gespeichert
+  * wurde (true) oder nicht (false).
+  * @$_FILES['*userfile*']['tmp_name']: der temporäre Dateiname unter dem die Datei auf dem Server gespeichert
+  * wurde (der erste Parameter gibt an aus welchem Input-Feld die Datei stammt).
+  * @$temp_file: eine Variable, in der der temporäre Dateiname unter dem die Datei auf dem Server gespeichert
+  * wurde, gespeichert wird.
+  * @$dir_seperator: eine Variable in der der Dateipfad-Separator ("\") gespeichert wird.
+  * @$avatar_name: eine Variable in der der gewollte Dateiname aus Benutzername und Dateiformat zusammengesetzt wird (z.B. RUBEN.jpg).
+  * @$path: eine Variable, in der der gesamte gewünschte Dateipfad zusammengesetzt wird.
+  *
+  * @return: gibt $isImageMoved als Indikator, ob die Datei erfolgreich auf dem Server gespeichert wurde (true) oder nicht (false), zurück.
   */
  function uploadProfilePicture ($username) {
 
-   //
+   // Setzt $isImageMoved (den Indikator, ob die Datei verschoben wurde oder nicht) auf false (nicht verschoben).
    $isImageMoved = false;
 
-   //
+   // Wenn $_FILES["Profilbild"]["tmp_name"] gesetzt ist,
    if ($_FILES["Profilbild"]["tmp_name"]) {
 
-     //
+     // wird der temporäre Dateiname unter dem die Datei auf dem Server gespeichert wurde, gespeichert,
      $temp_file = $_FILES["Profilbild"]["tmp_name"];
 
-     //
+     // wird ein Dateipfand-Separator in $dir_seperator gespeichert,
      $dir_seperator = DIRECTORY_SEPARATOR;
 
-     //
+     // wird der gewünschte Dateiname aus $username und dem Dateiformat ".jpg" zusammengesetzt und in $avatar_name gespeichert und
      $avatar_name = $username . ".jpg";
 
-     //
+     // wird der gewünschte Dateipfad, unter dem die Datei auf dem Server gespeichert wurde, in der Variablen $path gespeichert.
      $path = "./../avatar_uploads" . $dir_seperator . $avatar_name;
 
-     //
+     // Wenn außerdem, die Datei erfolgreich zum gewünschten Pfad verschoben wurde,
      if (move_uploaded_file($temp_file, $path)) {
 
-      //
+      // wird $isImageMoved (der Indikator, ob die Datei verschoben wurde oder nicht) auf true (verschoben) gesetzt.
       $isImageMoved = true;
 
       }
 
     }
 
-    //
+    // Es wird $isImageMoved (der Indikator, ob die Datei verschoben wurde oder nicht) zurückgegeben.
     return $isImageMoved;
 
  }
 
 
+
  /**
-  * @uploadProfileBanner:
+  * @uploadProfileBanner: eine Funktion, die den Benutzernamen übergeben bekommt und den über das
+  * Formular übergebenen Profilbanner aus dem temporären Speicher in den gewünschten Ordner auf dem Server speichert.
   *
-  * @return:
+  * @DIRECTORY_SEPARATOR: entspricht Dateipfad-Separator ("\")
+  * @move_uploaded_file(): eine PHP-Funktion, die als Parameter den Namen der temporär auf dem Server gespeicherten Datei und das Zielverzeichnis übergeben bekommt.
+  * Die Funktion prüft, dass die mit $temp_file bezeichnete Datei eine gültige Upload-Datei ist (d.h., dass sie mittels PHP's HTTP POST Upload-Mechanismus hochgeladen wurde).
+  * Ist die Datei gültig, wird sie zum in $path bezeichneten Dateinamen verschoben.
+  *
+  * @$isBannerMoved: eine Variable, die als Indikator dafür dient, ob der Banner erfolgreich auf dem Server gespeichert
+  * wurde (true) oder nicht (false).
+  * @$_FILES['*userfile*']['tmp_name']: der temporäre Dateiname unter dem die Datei auf dem Server gespeichert
+  * wurde (der erste Parameter gibt an aus welchem Input-Feld die Datei stammt).
+  * @$temp_file: eine Variable, in der der temporäre Dateiname unter dem die Datei auf dem Server gespeichert
+  * wurde, gespeichert wird.
+  * @$dir_seperator: eine Variable in der der Dateipfad-Separator ("\") gespeichert wird.
+  * @$avatar_name: eine Variable in der der gewollte Dateiname aus Benutzername und Dateiformat zusammengesetzt wird (z.B. RUBEN.jpg).
+  * @$path: eine Variable, in der der gesamte gewünschte Dateipfad zusammengesetzt wird.
+  *
+  * @return: gibt $isBannerMoved als Indikator, ob die Datei erfolgreich auf dem Server gespeichert wurde (true) oder nicht (false), zurück.
   */
  function uploadProfileBanner ($username) {
 
-   //
+   // Setzt $isBannerMoved (den Indikator, ob die Datei verschoben wurde oder nicht) auf false (nicht verschoben).
    $isBannerMoved = false;
 
-   //
+   // Wenn $_FILES["Profilbanner"]["tmp_name"] gesetzt ist,
    if ($_FILES["Profilbanner"]["tmp_name"]) {
 
-     //
+     // wird der temporäre Dateiname unter dem die Datei auf dem Server gespeichert wurde, gespeichert,
      $temp_file = $_FILES["Profilbanner"]["tmp_name"];
 
-     //
+     // wird ein Dateipfand-Separator in $dir_seperator gespeichert,
      $dir_seperator = DIRECTORY_SEPARATOR;
 
-     //
+     // wird der gewünschte Dateiname aus $username und dem Dateiformat ".jpg" zusammengesetzt und in $banner_name gespeichert und
      $banner_name = $username . ".jpg";
 
-     //
+     // wird der gewünschte Dateipfad, unter dem die Datei auf dem Server gespeichert wurde, in der Variablen $path gespeichert.
      $path = "./../banner_uploads" . $dir_seperator . $banner_name;
 
-     //
+     // Wenn außerdem, die Datei erfolgreich zum gewünschten Pfad verschoben wurde,
      if (move_uploaded_file($temp_file, $path)) {
 
-       //
+       // wird $isBannerMoved (der Indikator, ob die Datei verschoben wurde oder nicht) auf true (verschoben) gesetzt.
        $isBannerMoved = true;
 
       }
 
     }
 
-    //
+    // Es wird $isBannerMoved (der Indikator, ob die Datei verschoben wurde oder nicht) zurückgegeben.
     return $isBannerMoved;
 
  }
-
-
 
 ?>
