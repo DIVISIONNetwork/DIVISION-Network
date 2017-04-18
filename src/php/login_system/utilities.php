@@ -480,81 +480,118 @@ function signout () {
 
 
 
-
+ /**
+  * @isValidImage:
+  *
+  * @return:
+  */
  function isValidImage ($file) {
 
+   //
    $form_errors = array();
 
+   //
    $parts = explode(".", $file);
 
+   //
    $extension = end($parts);
 
+   //
    switch (strtolower($extension)) {
      case "jpg":
      case "jpeg":
      case "png":
 
+     //
      return $form_errors;
    }
 
+   //
    $form_errors[] = $extension . " ist keine zulässiges Dateiformat.";
 
+   //
    return $form_errors;
 
  }
 
 
-
+ /**
+  * @uploadProfilePicture:
+  *
+  * @return:
+  */
  function uploadProfilePicture ($username) {
 
-    $isImageMoved = false;
+   //
+   $isImageMoved = false;
 
-    if ($_FILES["Profilbild"]["tmp_name"]) {
+   //
+   if ($_FILES["Profilbild"]["tmp_name"]) {
 
-      $temp_file = $_FILES["Profilbild"]["tmp_name"];
+     //
+     $temp_file = $_FILES["Profilbild"]["tmp_name"];
 
-      $dir_seperator = DIRECTORY_SEPARATOR;
+     //
+     $dir_seperator = DIRECTORY_SEPARATOR;
 
-      $avatar_name = $username . ".jpg";
+     //
+     $avatar_name = $username . ".jpg";
 
-      $path = "./../avatar_uploads" . $dir_seperator . $avatar_name;
+     //
+     $path = "./../avatar_uploads" . $dir_seperator . $avatar_name;
 
-      if (move_uploaded_file($temp_file, $path)) {
+     //
+     if (move_uploaded_file($temp_file, $path)) {
 
-        $isImageMoved = true;
+      //
+      $isImageMoved = true;
 
       }
 
     }
 
+    //
     return $isImageMoved;
 
  }
 
 
-
+ /**
+  * @uploadProfileBanner:
+  *
+  * @return:
+  */
  function uploadProfileBanner ($username) {
 
-    $isBannerMoved = false;
+   //
+   $isBannerMoved = false;
 
-    if ($_FILES["Profilbanner"]["tmp_name"]) {
+   //
+   if ($_FILES["Profilbanner"]["tmp_name"]) {
 
-      $temp_file = $_FILES["Profilbanner"]["tmp_name"];
+     //
+     $temp_file = $_FILES["Profilbanner"]["tmp_name"];
 
-      $dir_seperator = DIRECTORY_SEPARATOR;
+     //
+     $dir_seperator = DIRECTORY_SEPARATOR;
 
-      $banner_name = $username . ".jpg";
+     //
+     $banner_name = $username . ".jpg";
 
-      $path = "./../banner_uploads" . $dir_seperator . $banner_name;
+     //
+     $path = "./../banner_uploads" . $dir_seperator . $banner_name;
 
-      if (move_uploaded_file($temp_file, $path)) {
+     //
+     if (move_uploaded_file($temp_file, $path)) {
 
-        $isBannerMoved = true;
+       //
+       $isBannerMoved = true;
 
       }
 
     }
 
+    //
     return $isBannerMoved;
 
  }
