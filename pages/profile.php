@@ -1,8 +1,9 @@
-<?php include_once("./../src/php/login_system/session.php"); ?>
-<?php if (isset($_SESSION["username"])) {$page_title = "{$_SESSION["username"]} - DIVISION Network";} else {$page_title = "DIVISION Network";} ?>
-<?php include_once("./../src/assets/head.php"); ?>
-<?php include_once("./../src/assets/header.php"); ?>
-<?php include_once("./../src/php/login_system/profile.php"); ?>
+<?php
+if (isset($_SESSION["username"])) {$page_title = "{$_SESSION["username"]} - DIVISION Network";} else {$page_title = "DIVISION Network";}
+include_once("./../src/assets/head.php");
+include_once("./../src/assets/header.php");
+include_once("./../src/php/login_system/profile.php");
+?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
     <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">

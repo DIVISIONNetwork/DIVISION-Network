@@ -1,8 +1,10 @@
-<?php include_once("./../src/php/login_system/session.php"); ?>
-<?php if (isset($_SESSION["username"])) {$page_title = "{$_SESSION["username"]} - DIVISION Network";} else {$page_title = "DIVISION Network";} ?>
-<?php include_once("./../src/assets/head.php"); ?>
-<?php include_once("./../src/assets/header.php"); ?>
-<?php include_once("./../src/php/login_system/profile.php"); ?>
+<?php
+if (isset($_SESSION["username"])) {$page_title = "{$_SESSION['username']} - DIVISION Network";} else {$page_title = "DIVISION Network";}
+include_once("./../src/assets/head.php");
+include_once("./../src/assets/header.php");
+include_once("./../src/php/login_system/profile.php");
+?>
+
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
       <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
@@ -35,6 +37,7 @@
                   <input type="file" name="Profilbanner" id="Profilbanner">
                 </div>
                 <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
+                <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
                 <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button>
               </form>
               <p><a href="profile.php">Zurück zum Profil</a></p>

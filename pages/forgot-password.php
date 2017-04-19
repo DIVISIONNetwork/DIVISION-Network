@@ -1,9 +1,30 @@
-<?php $page_title = "Passwort vergessen - DIVISION Network" ?>
-<?php include_once("./../src/php/login_system/database_connection.php"); ?>
-<?php include_once("./../src/php/login_system/utilities.php"); ?>
-<?php include_once("./../src/assets/head.php"); ?>
-<?php include_once("./../src/assets/header.php"); ?>
-<?php include_once("./../src/php/login_system/forgot_password.php"); ?>
+<?php
+$page_title = "Passwort vergessen - DIVISION Network";
+include_once("./../src/assets/head.php");
+include_once("./../src/assets/header.php");
+include_once("./../src/php/login_system/password-recovery.php");
+?>
+
+<?php
+
+// Wenn $_GET["id"] gesetzt ist,
+if (isset($_GET["id"])) {
+
+  // wird $encoded_id auf $_GET["id"] gesetzt,
+  $encoded_id = $_GET["id"];
+
+  // $encoded_id dekodiert und in $decoded_id gespeichert,
+  $decoded_id = base64_decode($encoded_id);
+
+  // die $decoded_id in Delimiter [0] und die eigentliche User-ID [1] gespalten und im Array $id_array gespeichert und
+  $id_array = explode("JHf33QTa56afÜh32aURCdjY5H", $decoded_id);
+
+  // $id auf $id_array["1"], also die eigentliche User-ID gesetzt.
+  $id = $id_array["1"];
+
+}
+
+ ?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
     <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
@@ -22,12 +43,6 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12">
-                  <label for="reset_password_email" class="sr-only">E-Mail:</label>
-                    <input type="text" class="form-control" id="password_reset_email" placeholder="E-Mail" name="E-Mail">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
                   <label for="password_reset_new_password" class="sr-only">Neues Passwort:</label>
                     <input type="password" class="form-control" id="password_reset_new_password" placeholder="Neues Passwort" name="Neues_Passwort">
                 </div>
@@ -44,6 +59,8 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="login_or_signup">
+                    <input type="hidden" name="user_id" value="<?php if (isset($id)) { echo $id; } ?>">
+                    <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
                       <button type="submit" class="btn btn-default pull-center" id="password_reset_button" name="password_reset_button">Passwort ändern</button>
                   </div>
                 </div>

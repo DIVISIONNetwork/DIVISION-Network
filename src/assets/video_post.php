@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="post_avatar_cell">
-        <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" class="img-rounded post_user_avatar">
+        <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded post_user_avatar">
       </div>
       <div class="dropdown pull-right">
         <button class="btn btn-default dropdown-toggle btn-xs post_options_btn" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h fa-lg post_options_symbol" aria-hidden="true"></i></button>

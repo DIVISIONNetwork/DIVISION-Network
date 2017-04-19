@@ -66,121 +66,130 @@ if ((isset($_SESSION["id"]) || isset($_GET["user_identity"])) && !isset($_POST["
   $encode_id = base64_encode("o9Öhs4Iqd1Üje8Ahf9g{$id}");
 
 
-} elseif (isset($_POST["edit_profile_button"])) {
+} elseif (isset($_POST["edit_profile_button"], $_POST["token"])) {
 
-  $form_errors = array();
+  if (validate_token($_POST["token"])) {
 
-  $required_fields_array = array("E-Mail", "Benutzername");
+    $form_errors = array();
 
-  $form_errors = array_merge($form_errors, check_empty_fields($required_fields_array));
+    $required_fields_array = array("E-Mail", "Benutzername");
 
-  $fields_to_check_length = array("Benutzername" => 2);
+    $form_errors = array_merge($form_errors, check_empty_fields($required_fields_array));
 
-  $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
+    $fields_to_check_length = array("Benutzername" => 2);
 
-  $form_errors = array_merge($form_errors, check_email());
+    $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
 
-  if (isset($_FILES["Profilbild"]["name"])) {
+    $form_errors = array_merge($form_errors, check_email());
 
-    $avatar = $_FILES["Profilbild"]["name"];
+    if (isset($_FILES["Profilbild"]["name"])) {
 
-  } else {
-
-    $avatar = NULL;
-
-  }
-
-  if ($avatar != NULL) {
-
-    $form_errors = array_merge($form_errors, isValidImage($avatar));
-
-  }
-
-  if (isset($_FILES["Profilbanner"]["name"])) {
-
-    $banner = $_FILES["Profilbanner"]["name"];
-
-  } else {
-
-    $banner = NULL;
-
-  }
-
-  if ($banner != NULL) {
-
-    $form_errors = array_merge($form_errors, isValidImage($banner));
-
-  }
-
-  $email = $_POST["E-Mail"];
-
-  $username = $_POST["Benutzername"];
-
-  $hidden_id = $_POST["hidden_id"];
-
-  if (empty($form_errors)) {
-
-
-    try {
-
-      $sqlUpdate = "UPDATE users SET username =:username, email =:email WHERE id =:id";
-
-      $statement = $db->prepare($sqlUpdate);
-
-      $statement->execute(array(":username" => $username, ":email" => $email, ":id" => $hidden_id));
-
-      if ($statement->rowCount() == 1 || uploadProfileBanner($username) || uploadProfilePicture($username)) {
-
-        $_SESSION["username"] = $username;
-
-        $_SESSION["email"] = $email;
-
-        $result = "<script type=\"text/javascript\">
-                        swal({
-                        title: \"Profil bearbeitet!\",
-                        text: \"Deine Account-Daten wurden erfolrgeich geändert.\",
-                        type: \"success\",
-                        closeOnConfirm: false
-                        },
-                        function(){
-                          window.location.href = 'profile.php';
-                        });
-                        </script>";
-
-      } else {
-
-        $result = "<script type=\"text/javascript\">
-                        swal({
-                        title: \"Ooops!\",
-                        text: \"Deine Account-Daten konnten nicht geändert werden.\",
-                        type: \"error\",
-                        closeOnConfirm: false
-                        },
-                        function(){
-                          window.location.href = 'edit-profile.php';
-                        });
-                        </script>";
-      }
-
-    } catch (PDOException $ex) {
-
-      $result = flashMessage("Ein Fehler ist aufgetreten: " . $ex->getMessage());
-
-    }
-
-  } else {
-
-    if (count($form_errors) == 1) {
-
-      $result = flashMessage("Eine deiner Angaben ist nicht korrekt: ");
+      $avatar = $_FILES["Profilbild"]["name"];
 
     } else {
 
-      $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
+      $avatar = NULL;
 
     }
 
+    if ($avatar != NULL) {
+
+      $form_errors = array_merge($form_errors, isValidImage($avatar));
+
+    }
+
+    if (isset($_FILES["Profilbanner"]["name"])) {
+
+      $banner = $_FILES["Profilbanner"]["name"];
+
+    } else {
+
+      $banner = NULL;
+
+    }
+
+    if ($banner != NULL) {
+
+      $form_errors = array_merge($form_errors, isValidImage($banner));
+
+    }
+
+    $email = $_POST["E-Mail"];
+
+    $username = $_POST["Benutzername"];
+
+    $hidden_id = $_POST["hidden_id"];
+
+    if (empty($form_errors)) {
+
+
+      try {
+
+        $sqlUpdate = "UPDATE users SET username =:username, email =:email WHERE id =:id";
+
+        $statement = $db->prepare($sqlUpdate);
+
+        $statement->execute(array(":username" => $username, ":email" => $email, ":id" => $hidden_id));
+
+        if ($statement->rowCount() == 1 || uploadProfileBanner($username) || uploadProfilePicture($username)) {
+
+          $_SESSION["username"] = $username;
+
+          $_SESSION["email"] = $email;
+
+          $result = "<script type=\"text/javascript\">
+                          swal({
+                          title: \"Profil bearbeitet!\",
+                          text: \"Deine Account-Daten wurden erfolrgeich geändert.\",
+                          type: \"success\",
+                          closeOnConfirm: false
+                          },
+                          function(){
+                            window.location.href = 'profile.php';
+                          });
+                          </script>";
+
+        } else {
+
+          $result = "<script type=\"text/javascript\">
+                          swal({
+                          title: \"Ooops!\",
+                          text: \"Deine Account-Daten konnten nicht geändert werden.\",
+                          type: \"error\",
+                          closeOnConfirm: false
+                          },
+                          function(){
+                            window.location.href = 'edit-profile.php';
+                          });
+                          </script>";
+        }
+
+      } catch (PDOException $ex) {
+
+        $result = flashMessage("Ein Fehler ist aufgetreten: " . $ex->getMessage());
+
+      }
+
+    } else {
+
+      if (count($form_errors) == 1) {
+
+        $result = flashMessage("Eine deiner Angaben ist nicht korrekt: ");
+
+      } else {
+
+        $result = flashMessage(count($form_errors) . " deiner Angaben sind nicht korrekt:");
+
+      }
+
+    }
+
+  } else {
+
+    $result = "<script type='text/javascript'>swal('Error', 'Diese Anfrage stammt von einer unbekannten Quelle. Es handelt sich möglicher Weise um einen Angriff.', 'error');</script>";
+
   }
+
 
 }
 

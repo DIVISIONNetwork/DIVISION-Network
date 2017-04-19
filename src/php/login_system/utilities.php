@@ -296,7 +296,8 @@ function rememberMe ($user_id) {
   // Die User-ID wird verschlüsselt und in der Variablen $encryptCookieData gespeichert
   $encryptCookieData = base64_encode("Uh5R5tfzU3JüU1qHf9tFSTQR{$user_id}");
   // Cookie an der Stelle rememberUserCookie auf $encryptCookieData gesetzt und läuft in 30 Tagen ab.
-  setCookie("rememberUserCookie", $encryptCookieData, time()+60*60*24*100, "/");
+  setcookie("rememberUserCookie", $encryptCookieData, time()+60*60*24*100, "/");
+
 }
 
 
@@ -408,7 +409,7 @@ function signout () {
     // wird $_COOKIE["rememberUserCookie"] gelöscht
     unset($_COOKIE["rememberUserCookie"]);
     // und $_COOKIE["rememberUserCookie"] auf NULL gesetzt.
-    setCookie("rememberUserCookie", NULL, -1, "/");
+    setcookie("rememberUserCookie", NULL, -1, "/");
   }
 
   // Die Session wird gelöscht.
@@ -642,4 +643,28 @@ function signout () {
 
  }
 
+
+
+function _token() {
+
+  $randomToken = base64_encode(openssl_random_pseudo_bytes(32));
+
+  return $_SESSION["token"] = $randomToken;
+
+}
+
+
+
+function validate_token($requestToken) {
+
+  if (isset($_SESSION["token"]) && $requestToken === $_SESSION["token"]) {
+
+    unset($_SESSION["token"]);
+
+    return true;
+  }
+
+  return false;
+
+}
 ?>

@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-sm-12 hidden-xs">
           <div id="post_box_avatar_cell">
-            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" class="img-rounded" id="post_box_avatar">
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded" id="post_box_avatar">
           </div>
           <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
           <textarea class="form-control" name="post_textarea" id="postbox_textarea"></textarea><br />

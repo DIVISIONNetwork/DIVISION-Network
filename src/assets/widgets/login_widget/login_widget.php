@@ -15,20 +15,23 @@
               <label for="login_password" class="sr-only">Passwort:</label>
                 <input type="password" class="form-control" id="login_password" name="Passwort" placeholder="Passwort">
                 <div id="forgot_password_cell">
-                  <a href="./forgot_password.php" id="forgot_password_text">Passwort vergessen?</a>
+                  <a href="password-recovery.php" id="forgot_password_text">Passwort vergessen?</a>
                 </div>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <div class="checkbox" id="remember_me_checkbox_cell">
-                <label><input class="pull-right" type="checkbox" value="" id="remember_me_checkbox"><span id="remember_me_checkbox_text">Angemeldet bleiben</span></label>
+              <div class="checkbox" id="remember_me_checkbox_container">
+                <div class="pull-right">
+                  <label class="pull"><input class="" type="checkbox" value="yes" name="remember">Angemeldet bleiben</label>
+                </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
               <div class="login_or_signup">
+                <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
                 <button type="submit" href="index.php" class="btn btn-danger pull-center" id="login_button" name="login_button">Anmelden</button>
                 <div id="or_between_login_and_signup">oder</div>
               </div>
