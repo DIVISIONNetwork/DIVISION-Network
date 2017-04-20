@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION["username"]) || isCookieValid($db)): ?>
 <div class="container-fluid" id="chronik_filter_button_container">
   <div class="col-xs-12" id="chronik_filter_button_cell">
     <a class="btn btn-default btn-xs" id="chronik_filter_button" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -16,13 +17,13 @@
                 <div class="checkbox">
                   <label><input type="checkbox" value="">Vlog</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Lifestyle</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Beauty</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Essen & Trinken</label>
                 </div>
               </div>
@@ -34,7 +35,7 @@
                 <div class="checkbox">
                   <label><input type="checkbox" value="">Option 2</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Option 3</label>
                 </div>
               </div>
@@ -46,7 +47,7 @@
                 <div class="checkbox">
                   <label><input type="checkbox" value="">Option 2</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Option 3</label>
                 </div>
               </div>
@@ -58,7 +59,7 @@
                 <div class="checkbox">
                   <label><input type="checkbox" value="">Option 2</label>
                 </div>
-                <div class="checkbox disabled">
+                <div class="checkbox">
                   <label><input type="checkbox" value="">Option 3</label>
                 </div>
               </div>
@@ -69,3 +70,4 @@
     </div>
   </div>
 </div>
+<?php endif ?>

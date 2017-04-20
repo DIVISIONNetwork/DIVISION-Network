@@ -35,16 +35,4 @@
       </div>
     </form>
   </div>
-  <!-- Wenn der Benutzer nicht eingeloggt ist, wird anstatt der Postbox eine Begrüßungsbox angezeigt. -->
-  <?php else: ?>
-    <div class="container-fluid" id="post_box">
-      <form>
-        <div class="row">
-          <div class="col-sm-12">
-            <h3>Willkommen beim DIVISION Network!</h3>
-            <p>Werde jetzt Mitglied und poste deine neusten Videos in der Chronik oder chatte mit anderen Mitgliedern!</p>
-          </div>
-        </div>
-      </form>
-    </div>
 <?php endif ?>
