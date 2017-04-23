@@ -178,7 +178,7 @@ if (isset($_POST["password_reset_button"], $_POST["token"])) {
                                             line-height:1.8em;">
                         <h2>Passwort zurücksetzen</h2>
                         <p>Hallo '.$username.',<br><br>Um dein Passwort zurückzusetzen, klicke einfach auf den folgenden Link:</p>
-                        <p><a href="http://localhost/DIVISION-Network/DIVISION-Network/pages/forgot-password.php?id='.$encode_id.'"> Passwort zurücksetzen</a></p>
+                        <p><a href="http://localhost/DIVISION-Network/pages/forgot-password.php?id='.$encode_id.'"> Passwort zurücksetzen</a></p>
                         <p><strong>&copy;2017 DIVISION Network</strong></p>
                         </body>
                         </html>';

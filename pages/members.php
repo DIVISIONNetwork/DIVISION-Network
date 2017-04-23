@@ -6,34 +6,94 @@ include_once("./../src/assets/header.php");
 
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
-    <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
-    <div class="container-fluid member_container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="member_avatar_cell">
-            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded post_user_avatar">
-          </div>
-          <div class="dropdown pull-right">
-            <button class="btn btn-default dropdown-toggle btn-xs post_options_btn" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h fa-lg post_options_symbol" aria-hidden="true"></i></button>
-            <ul class="dropdown-menu post_options_dropdown">
-              <li><a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Post löschen</a></li>
-              <li><a href="#"><i class="fa fa-flag" aria-hidden="true"></i> Post melden</a></li>
-            </ul>
-          </div>
-          <h4 class="member_username">RUBEN</h4>
-          <h5 class="member_youtube_link">https://www.youtube.com/channel/UCZlbWLH_1VBAHY4afIVaFJw</h5><br />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="member_profile_data_container">
-            <table class="member_profile_data_table">
-              <tr><th>Videokategorie:</th><td>RUBEN</td></tr>
-              <tr><th>Abonnenten:</th><td><?php if (isset($email)) {echo $email;} ?></td></tr>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div class="col-md-6 col-sm-8 col-xs-12" id="main_content_container">
+    <div class="container-fluid members_member_container">
+      <table>
+        <tr>
+          <td>
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded members_member_user_avatar">
+          </td>
+          <td class="members_member_info_td">
+            <div>
+              <span class="members_member_username">RUBEN</span>
+              <button href="https://www.youtube.com/channel/UCZlbWLH_1VBAHY4afIVaFJw" class="btn btn-danger btn-xs members_member_go_to_channel_button">Zum Kanal</button>
+            </div>
+            <div class="members_member_short_info">
+              Lifestyle, Gaming & Vlogs | 194 Abonneten
+            </div>
+            <div class="members_member_interaction_container">
+              <button type="button" class="btn btn-default btn-sm members_member_follow_btn">Folgen</button>
+              <button type="button" class="btn btn-default btn-sm members_member_send_message_btn">Nachricht schreiben</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="container-fluid members_member_container">
+      <table>
+        <tr>
+          <td>
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded members_member_user_avatar">
+          </td>
+          <td class="members_member_info_td">
+            <div>
+              <span class="members_member_username">RUBEN</span>
+              <button href="https://www.youtube.com/channel/UCZlbWLH_1VBAHY4afIVaFJw" class="btn btn-danger btn-xs members_member_go_to_channel_button">Zum Kanal</button>
+            </div>
+            <div class="members_member_short_info">
+              Lifestyle, Gaming & Vlogs | 194 Abonneten
+            </div>
+            <div class="members_member_interaction_container">
+              <button type="button" class="btn btn-default btn-sm members_member_follow_btn">Folgen</button>
+              <button type="button" class="btn btn-default btn-sm members_member_send_message_btn">Nachricht schreiben</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="container-fluid members_member_container">
+      <table>
+        <tr>
+          <td>
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded members_member_user_avatar">
+          </td>
+          <td class="members_member_info_td">
+            <div>
+              <span class="members_member_username">RUBEN</span>
+              <button href="https://www.youtube.com/channel/UCZlbWLH_1VBAHY4afIVaFJw" class="btn btn-danger btn-xs members_member_go_to_channel_button">Zum Kanal</button>
+            </div>
+            <div class="members_member_short_info">
+              Lifestyle, Gaming & Vlogs | 194 Abonneten
+            </div>
+            <div class="members_member_interaction_container">
+              <button type="button" class="btn btn-default btn-sm members_member_follow_btn">Folgen</button>
+              <button type="button" class="btn btn-default btn-sm members_member_send_message_btn">Nachricht schreiben</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="container-fluid members_member_container">
+      <table>
+        <tr>
+          <td>
+            <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION['username']}.jpg")) { echo "./../avatar_uploads/{$_SESSION['username']}.jpg"; } ?>" class="img-rounded members_member_user_avatar">
+          </td>
+          <td class="members_member_info_td">
+            <div>
+              <span class="members_member_username">RUBEN</span>
+              <button href="https://www.youtube.com/channel/UCZlbWLH_1VBAHY4afIVaFJw" class="btn btn-danger btn-xs members_member_go_to_channel_button">Zum Kanal</button>
+            </div>
+            <div class="members_member_short_info">
+              Lifestyle, Gaming & Vlogs | 194 Abonneten
+            </div>
+            <div class="members_member_interaction_container">
+              <button type="button" class="btn btn-default btn-sm members_member_follow_btn">Folgen</button>
+              <button type="button" class="btn btn-default btn-sm members_member_send_message_btn">Nachricht schreiben</button>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
     <div class="col-lg-2 col-md-4 col-sm-4 hidden-xs" id="right_sidebar_col">

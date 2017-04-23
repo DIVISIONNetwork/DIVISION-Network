@@ -1,13 +1,12 @@
-<?php
-$page_title = "Account aktivieren - DIVISION Network";
+<?php $page_title = "Account aktivieren - DIVISION Network";
 include_once("./../src/assets/head.php");
-include_once("./../src/assets/header.php");
 include_once("./../src/php/login_system/signup.php");
+include_once("./../src/assets/header.php");
 ?>
 
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
-    <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
+    <div class="col-md-6 col-sm-8 col-xs-12" id="main_content_container">
       <div class="activate_container">
         <?php if (isset($result)) { echo $result; } ?>
       </div>

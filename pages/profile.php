@@ -6,7 +6,7 @@ include_once("./../src/php/login_system/profile.php");
 ?>
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
-    <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
+    <div class="col-md-6 col-sm-8 col-xs-12" id="main_content_container">
       <div class="profile_container">
         <?php if (!isset($_SESSION["username"])): ?>
           <p> Die Profile sind nur für Mitglieder sichtbar. <a href="login.php">Melde dich bitte an!</a><br /><br />

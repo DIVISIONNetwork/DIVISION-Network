@@ -84,7 +84,7 @@ if(isset($_POST["E-Mail"], $_POST["token"])) {
                                             line-height:1.8em;">
                         <h2>Herzlich Willkommen im DIVISION Network</h2>
                         <p>Hallo '.$username.',<br><br>Vielen Dank für deine Registrierung. Klicke auf den folgenden Link, um deine E-Mail Adresse zu bestätigen und damit deinen Account zu aktivieren:</p>
-                        <p><a href="http://localhost/DIVISION-Network/DIVISION-Network/pages/activate.php?id='.$encode_id.'"> Account aktivieren</a></p>
+                        <p><a href="http://localhost/DIVISION-Network/pages/activate.php?id='.$encode_id.'"> Account aktivieren</a></p>
                         <p><strong>&copy;2017 DIVISION Network</strong></p>
                         </body>
                         </html>';

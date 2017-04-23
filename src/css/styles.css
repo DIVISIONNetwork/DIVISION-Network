@@ -87,7 +87,7 @@ html {
 	margin-top: 5px;
 }
 
-#chronik {
+#main_content_container {
 	padding-left: 25px;
 	padding-right: 25px;
 }
@@ -283,8 +283,8 @@ html {
 }
 
 .post_user_avatar {
-	height: 65px;
-	width: 65px;
+	height: 75px;
+	width: 75px;
 }
 
 .post_avatar_cell {
@@ -1013,7 +1013,15 @@ a#show_login_again_text:hover {
 	height: 100%
 }
 
-.member_container {
+.heading_container {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* members.php */
+
+.members_member_container {
 	font-size: 16px;
 	margin-left: auto;
 	margin-right: auto;
@@ -1023,49 +1031,42 @@ a#show_login_again_text:hover {
 	padding-left: 20px;
 	height: auto;
 	margin-bottom: 20px;
-	-webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.13);
-	-moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.13);
-	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.13);
-	border-radius: 1px;
+	border-bottom: 1px solid #f5f5f5;
 }
 
-.heading_container {
-	width: 95%;
-	margin-right: auto;
-	margin-left: auto;
-
+.members_member_go_to_channel_button {
+	margin-top: -6px;
 }
 
-.members_list_member_img {
-	width: 100px;
-	height: 100px;
+.members_member_info_td {
+	vertical-align: top;
+	padding-left: 10px;
 }
 
-.member_avatar_cell {
-	float: left;
-	margin-right: 10px;
+.members_member_interaction_container {
+	padding-top: 4px;
 }
 
-.member_username {
-	margin-top: 0px;
-	color: #a1181a;
-	}
-
-.member_youtube_link {
-	color: #bdbdbd;
+.members_member_follow_btn {
+	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
-.member_profile_data_table {
-	border-collapse: collapse;
-	width: 100%;
+.members_member_send_message_btn {
+	margin-bottom: 5px;
 }
 
-.member_profile_data_table td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+.members_member_user_avatar {
+	height: 80px;
+	width: 80px;
 }
 
-.member_profile_data_table tr:nth-child(even) {
-    background-color: #dddddd;
+.members_member_username {
+	color: #d9534f;
+	font-size: 1.3em;
+	margin-right: 5px;
+}
+
+.members_member_short_info {
+	font-size: 0.8em;
 }

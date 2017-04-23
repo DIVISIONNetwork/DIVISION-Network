@@ -1,13 +1,13 @@
 <?php
 if (isset($_SESSION["username"])) {$page_title = "{$_SESSION['username']} - DIVISION Network";} else {$page_title = "DIVISION Network";}
 include_once("./../src/assets/head.php");
-include_once("./../src/assets/header.php");
 include_once("./../src/php/login_system/profile.php");
+include_once("./../src/assets/header.php");
 ?>
 
 <div class="container-fluid" id="content">
     <?php include_once("./../src/assets/left_sidebar.php"); ?>
-      <div class="col-md-6 col-sm-8 col-xs-12" id="chronik">
+      <div class="col-md-6 col-sm-8 col-xs-12" id="main_content_container">
         <div class="profile_container">
           <h1>Profil bearbeiten</h1>
           <div>
@@ -38,8 +38,31 @@ include_once("./../src/php/login_system/profile.php");
                 </div>
                 <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
                 <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
-                <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button>
+                <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button><br />
               </form>
+
+              <br />
+              <hr />
+              <br />
+
+              <form method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                  <lable for="Aktuelles Passwort">Aktuelles Passwort</lable>
+                  <input type="password" name="Aktuelles_Passwort" class="form-control" id="current_password" placeholder="Aktuelles Passwort">
+                </div>
+                <div class="form-group">
+                  <lable for="Neues Passwort">Neues Passwort</lable>
+                  <input type="password" name="Neues_Passwort" class="form-control" id="new_password" placeholder="Neues Passwort">
+                </div>
+                <div class="form-group">
+                  <lable for="Neues Passwort bestätigen">Neues Passwort bestätigen</lable>
+                  <input type="password" name="Neues_Passwort_bestätigen" class="form-control" id="confirm_new_password" placeholder="Neues Passwort bestätigen">
+                </div>
+                <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
+                <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
+                <button type="submit" name="change_password_button" class="btn btn-default pull-right">Speichern</button>
+              </form>
+              
               <p><a href="profile.php">Zurück zum Profil</a></p>
           <?php endif ?>
         </div>
