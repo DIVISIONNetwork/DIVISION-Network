@@ -14,8 +14,10 @@ include_once("./../src/php/login_system/profile.php");
         <?php else: ?>
           <div class="banner_and_avatar_container">
             <img src="<?php if (isset($profile_banner)) { echo $profile_banner; } ?>" alt="Profilbanner" class="profile_banner img">
+            <a href="change-profile-banner.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"> Profilbanner ändern</span></a>
             <div class="profile_picture_container">
               <img src="<?php if (isset($profile_picture)) { echo $profile_picture; } ?>" alt="Profile Picture" class="profile_picture img img-thumbnail">
+              <a href="change-profile-picture.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"> Profilbild ändern</span></a>
             </div>
           </div>
           <div class="user_profile_table_container">
@@ -23,7 +25,11 @@ include_once("./../src/php/login_system/profile.php");
               <tr><th>Benutzername:</th><td><?php if (isset($username)) {echo $username;} ?></td></tr>
               <tr><th>E-Mail:</th><td><?php if (isset($email)) {echo $email;} ?></td></tr>
               <tr><th>Mitglied seit:</th><td><?php if (isset($join_date)) {echo $join_date;} ?></td></tr>
-              <tr><th></th><td><a class="pull-right" href="edit-profile.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"></span> Profil bearbeiten</a></td></tr>
+              <tr><th></th><td>
+                <a class="pull-right" href="deactivate-account.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-trash" id="edit_profile_glyphicon"></span> Account deaktivieren</a>
+                <a class="" href="edit-profile.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"></span> Profil bearbeiten</a> &nbsp; &nbsp;
+                <a class="" href="change-password.php?user_identity=<?php if (isset($encode_id)) {echo $encode_id;} ?>"><span class="glyphicon glyphicon-edit" id="edit_profile_glyphicon"></span> Passwort ändern</a>
+              </td></tr>
             </table>
           </div>
         <?php endif ?>
