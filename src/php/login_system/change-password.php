@@ -2,7 +2,7 @@
 include_once("./../src/php/login_system/database_connection.php");
 include_once("./../src/php/login_system/utilities.php");
 
-if (issset($_POST["change_password_button"], $_POST["token"])) {
+if (isset($_POST["change_password_button"], $_POST["token"])) {
 
   if (validate_token($_POST["token"])) {
 
@@ -25,7 +25,66 @@ if (issset($_POST["change_password_button"], $_POST["token"])) {
 
       if ($password1 != $password2) {
 
-        $result = flashMessage("Es wurde nicht zwei Mal das selbe neue Passwort angegeben.");
+        $result = flashMessage("Es wurde nicht zweimal das selbe neue Passwort eingegeben.");
+
+      } else {
+
+        try {
+
+          $sqlQuery = "SELECT password FROM users WHERE id = :id";
+
+          $statement = $db->prepare($sqlQuery);
+
+          $statement->execute(array(":id" => $id));
+
+          if ($row = $statement->fetch()) {
+
+            $password_from_db = $row["password"];
+
+            if (password_verify($current_password, $password_from_db)) {
+
+              $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
+
+              $sqlUpdate = "UPDATE users SET password = :password WHERE id = :id";
+
+              $statement = $db->prepare($sqlUpdate);
+
+              $statement->execute(array(":password" => $hashed_password, ":id" => $id));
+
+              if ($statement->rowCount() === 1) {
+
+                $result = "<script type=\"text/javascript\">
+                                swal({
+                                title: \"Passwort geändert!\",
+                                text: \"Deine Passwort wurde erfolrgeich geändert.\",
+                                type: \"success\",
+                                closeOnConfirm: false });
+                                </script>";
+
+              } else {
+
+                $result = flashMessage("Passwort konnte nicht geändert werden.");
+
+              }
+
+
+            } else {
+
+              $result = flashMessage("Dein aktuelles Passwort ist nicht korrekt.");
+
+            }
+
+          } else {
+
+            signout();
+
+          }
+
+        } catch (PDOException $ex) {
+
+          $result = flashMessage("Ein Fehler ist aufgetreten: " . $ex->getMessage());
+
+        }
 
       }
 
@@ -46,6 +105,7 @@ if (issset($_POST["change_password_button"], $_POST["token"])) {
         }
 
     }
+
   } else {
 
     $result = "<script type='text/javascript'>swal('Error', 'Diese Anfrage stammt von einer unbekannten Quelle. Es handelt sich möglicher Weise um einen Angriff.', 'error');</script>";

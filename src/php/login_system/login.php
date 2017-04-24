@@ -62,8 +62,20 @@ if (isset($_POST['login_button'], $_POST["token"])) {
             // Wenn $activated === "0" ist (also der Account noch nicht aktiviert wurde),
             if ($activated === "0") {
 
-              // wird die Fehlermeldung "Bitte aktiviere deinen Account." ausgegeben.
-              $result = flashMessage("Bitte aktiviere deinen Account.");
+              if (checkDuplicateEntries("deactivated_accounts", "user_id", $id, $db)) {
+
+                $db->exec("UPDATE users SET activated = '1' WHERE id = $id LIMIT 1");
+
+                $db->exec("DELETE FROM deactivated_accounts WHERE user_id = $id LIMIT 1");
+
+                prepareLogin($id, $username, $remember);
+
+              } else {
+
+                // wird die Fehlermeldung "Bitte aktiviere deinen Account." ausgegeben.
+                $result = flashMessage("Bitte aktiviere deinen Account.");
+
+              }
 
               // Wenn $activated != "0" ist (also der Account bereits aktiviert wurde),
             } else {
@@ -71,45 +83,7 @@ if (isset($_POST['login_button'], $_POST["token"])) {
               // wird, wenn password_verify() true zurückgibt (also $password [das eingegebene Passwort] und $hashed_password [das in der Database gespeicherte Passwort] übereinstimmen),
               if (password_verify($password, $hashed_password)){
 
-                // $_SESSION['id'] auf die User-ID gesetzt
-                $_SESSION['id'] = $id;
-                // $_SESSION['username'] auf den Benutzernamen gesetzt,
-                $_SESSION['username'] = $username;
-
-              /**
-                * @REMOTE_ADDR: Die IP-Adresse des Nutzers.
-                * @HTTP_USER_AGENT: Der vom Benutzer verwendete Browser.
-                * @md5(): Errechnet (verschlüsselt) den MD5-Hash eines Strings.
-                * @$_SERVER: Informationen über Server und Ausführungsumgebung.
-                */
-
-                // eine Fingerprint des Benutzers (mit IP-Adresse und Browser) gespeichert,
-                $fingerprint = md5($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"]);
-                // $_SESSION["last_active"] auf die aktuelle Zeit gesetzt,
-                $_SESSION["last_active"] = time();
-                //   $_SESSION["fingerprint"] auf den Fingerprint des Benutzers gesetzt und
-                $_SESSION["fingerprint"] = $fingerprint;
-
-                // zur Begrüßung per Sweet Alert "Willkommen zurück" ausgegeben.
-                echo $welcome = "<script type=\"text/javascript\">
-                                swal({
-                                title: \"Hallo {$username}!\",
-                                text: \"Du hast dich erfolgreich angemeldet.\",
-                                type: \"success\",
-                                timer: 3000,
-                                showConfirmButton: false });
-
-                                setTimeout(function(){
-                                window.location.href = 'index.php';
-                              }, 2000);
-                                </script>";
-
-                // Wenn außerdem $remember auf "yes" gesetzt ist,
-                if ($remember === "yes") {
-                  // wird auf dem PC des Benutzers eine Cookie mit der verschlüsselten User-ID angelegt, der nach 30 Tagen verfällt.
-                  rememberMe($id);
-
-                }
+                prepareLogin($id, $username, $remember);
 
                 // Wenn password_verify() false zurückgibt (also $password [das eingegebene Passwort] und $hashed_password[das in der Database gespeicherte Passwort] nicht übereinstimmen),
               } else {

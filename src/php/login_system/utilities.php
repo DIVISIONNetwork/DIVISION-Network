@@ -667,4 +667,48 @@ function validate_token($requestToken) {
   return false;
 
 }
+
+
+function prepareLogin($id, $username, $remember) {
+  
+  // $_SESSION['id'] auf die User-ID gesetzt
+  $_SESSION['id'] = $id;
+  // $_SESSION['username'] auf den Benutzernamen gesetzt,
+  $_SESSION['username'] = $username;
+
+/**
+  * @REMOTE_ADDR: Die IP-Adresse des Nutzers.
+  * @HTTP_USER_AGENT: Der vom Benutzer verwendete Browser.
+  * @md5(): Errechnet (verschlüsselt) den MD5-Hash eines Strings.
+  * @$_SERVER: Informationen über Server und Ausführungsumgebung.
+  */
+
+  // eine Fingerprint des Benutzers (mit IP-Adresse und Browser) gespeichert,
+  $fingerprint = md5($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"]);
+  // $_SESSION["last_active"] auf die aktuelle Zeit gesetzt,
+  $_SESSION["last_active"] = time();
+  //   $_SESSION["fingerprint"] auf den Fingerprint des Benutzers gesetzt und
+  $_SESSION["fingerprint"] = $fingerprint;
+
+  // Wenn außerdem $remember auf "yes" gesetzt ist,
+  if ($remember === "yes") {
+    // wird auf dem PC des Benutzers eine Cookie mit der verschlüsselten User-ID angelegt, der nach 30 Tagen verfällt.
+    rememberMe($id);
+
+  }
+
+  // zur Begrüßung per Sweet Alert "Willkommen zurück" ausgegeben.
+  echo $welcome = "<script type=\"text/javascript\">
+                  swal({
+                  title: \"Hallo {$username}!\",
+                  text: \"Du hast dich erfolgreich angemeldet.\",
+                  type: \"success\",
+                  timer: 3000,
+                  showConfirmButton: false });
+
+                  setTimeout(function(){
+                  window.location.href = 'index.php';
+                }, 2000);
+                  </script>";
+}
 ?>

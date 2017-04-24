@@ -2,7 +2,11 @@
 if (isset($_SESSION["username"])) {$page_title = "{$_SESSION['username']} - DIVISION Network";} else {$page_title = "DIVISION Network";}
 include_once("./../src/assets/head.php");
 include_once("./../src/php/login_system/profile.php");
+include_once("./../src/php/login_system/change-password.php");
+include_once("./../src/php/login_system/account-deactivation.php");
 include_once("./../src/assets/header.php");
+
+$token = _token();
 ?>
 
 <div class="container-fluid" id="content">
@@ -28,23 +32,46 @@ include_once("./../src/assets/header.php");
                   <lable for="Benutzername">Benutzername</lable>
                   <input type="text" name="Benutzername" class="form-control" id="Benutzername" value="<?php if (isset($username)) { echo $username; } ?>">
                 </div>
+                <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
+                <input type="hidden" name="token" value="<?php if (isset($token)) { echo $token; } ?>">
+                <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button><br />
+              </form>
+              <hr />
+              <h3>Profilbild ändern</h3>
+              <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
-                  <lable for="Profilbild">Profilbild</lable>
+                  <lable for="Profilbild" class="sr-only">Profilbild</lable>
                   <input type="file" name="Profilbild" id="Profilbild">
                 </div>
                 <div class="form-group">
-                  <lable for="Profilbanner">Profilbanner</lable>
-                  <input type="file" name="Profilbanner" id="Profilbanner">
+                  <input type="hidden" name="E-Mail" class="form-control" id="E-Mail" value="<?php if (isset($email)) { echo $email; } ?>">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="Benutzername" class="form-control" id="Benutzername" value="<?php if (isset($username)) { echo $username; } ?>">
                 </div>
                 <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
-                <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
+                <input type="hidden" name="token" value="<?php if (isset($token)) { echo $token; } ?>">
                 <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button><br />
               </form>
-
-              <br />
               <hr />
-              <br />
-
+              <h3>Profilbanner ändern</h3>
+              <form method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                  <lable for="Profilbanner" class="sr-only">Profilbanner</lable>
+                  <input type="file" name="Profilbanner" id="Profilbanner">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="E-Mail" class="form-control" id="E-Mail" value="<?php if (isset($email)) { echo $email; } ?>">
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="Benutzername" class="form-control" id="Benutzername" value="<?php if (isset($username)) { echo $username; } ?>">
+                </div>
+                <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
+                <input type="hidden" name="token" value="<?php if (isset($token)) { echo $token; } ?>">
+                <button type="submit" name="edit_profile_button" class="btn btn-default pull-right">Speichern</button><br />
+              </form>
+              <hr />
+              <h3>Passwort ändern</h3>
               <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
                   <lable for="Aktuelles Passwort">Aktuelles Passwort</lable>
@@ -59,10 +86,20 @@ include_once("./../src/assets/header.php");
                   <input type="password" name="Neues_Passwort_bestätigen" class="form-control" id="confirm_new_password" placeholder="Neues Passwort bestätigen">
                 </div>
                 <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
-                <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
+                <input type="hidden" name="token" value="<?php if (isset($token)) { echo $token; } ?>">
                 <button type="submit" name="change_password_button" class="btn btn-default pull-right">Speichern</button>
               </form>
-              
+              <br />
+              <hr />
+              <br />
+              <form method="post" action="" enctype="multipart/form-data">
+                <input type="hidden" name="hidden_id" value="<?php if(isset($id)) { echo $id; } ?>">
+                <input type="hidden" name="token" value="<?php if (isset($token)) { echo $token; } ?>">
+                <button onclick="return confirm('Willst du deinen Account wirklich deaktivieren?')" type="submit" name="deactivate_account_button" class="btn btn-danger pull-right">Account deaktivieren</button>
+              </form>
+              <br />
+              <hr />
+              <br />
               <p><a href="profile.php">Zurück zum Profil</a></p>
           <?php endif ?>
         </div>
