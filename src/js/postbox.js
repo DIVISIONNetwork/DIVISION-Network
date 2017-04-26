@@ -1,150 +1,68 @@
 function change_postbox (a) {
 
   if (a == "video") {
-    var video = `<form>
-                  <div class="row">
-                    <div class="col-sm-12 hidden-xs">
-                      <div id="post_box_avatar_cell">
-                        <img src="./../src/img/Profilbild.jpg" class="img-rounded" id="post_box_avatar">
-                      </div>
-                      <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues RUBEN?</h4></span>
-                      <textarea class="form-control" name="post_youtube_link" id="postbox_link" placeholder="YouTube-Link"></textarea><br />
-                      <textarea class="form-control" name="post_textarea" id="postbox_textarea" placeholder="Videobeschreibung"></textarea><br />
-                    </div>
-                    <div class="hidden-lg hidden-md hidden-sm col-xs-12">
-                      <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues RUBEN?</h4></span>
-                      <textarea class="form-control" name="post_youtube_link" id="postbox_link_mobile" placeholder="YouTube-Link"></textarea><br />
-                      <textarea class="form-control" name="post_textarea" id="postbox_textarea_mobile" placeholder="Videobeschreibung"></textarea><br />
-                    </div>
+    var video1 = `<div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für YouTube-Link</label>
+                    <input type="text" class="form-control" name="YouTube-Link" id="postbox_link" placeholder="YouTube-Link">
                   </div>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="hidden-xs" id="select_post_content_and_post_button">
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                      </div>
-                      <div class="hidden-lg hidden-md hidden-sm" id="select_post_content_and_post_button_mobile">
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>`;
-    document.getElementById('post_box').innerHTML = video;
+                  <div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Text zum YouTube-Video</label>
+                    <textarea class="form-control" name="textpost_textarea" id="textpost_textarea_mobile"></textarea>
+                  </div>`;
+
+    var video2 = `<button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
+                  <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
+                  <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>`;
+
+    document.getElementById('textpost_textarea_container').innerHTML = video1;
+    document.getElementById('postbox_buttons_container').innerHTML = video2;
+    document.getElementById('postbox_buttons_container_mobile').innerHTML = video2;
   } else if (a == "photo") {
-    var photo = `  <form>
-                    <div class="row">
-                      <div class="col-sm-12 hidden-xs">
-                        <div id="post_box_avatar_cell">
-                          <img src="./../src/img/Profilbild.jpg" class="img-rounded" id="post_box_avatar">
-                        </div>
-                        <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues RUBEN?</h4></span>
-                        <textarea class="form-control" name="post_link" id="postbox_link" placeholder="Foto-Link"></textarea><br />
-                        <textarea class="form-control" name="post_textarea" id="postbox_textarea" placeholder="Fotobeschreibung"></textarea><br />
-                      </div>
-                      <div class="hidden-lg hidden-md hidden-sm col-xs-12">
-                        <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues RUBEN?</h4></span>
-                        <textarea class="form-control" name="post_link" id="postbox_link_mobile" placeholder="Foto-Link"></textarea><br />
-                        <textarea class="form-control" name="post_textarea" id="postbox_textarea_mobile" placeholder="Fotobeschreibung"></textarea><br />
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <div class="hidden-xs" id="select_post_content_and_post_button">
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                        </div>
-                        <div class="hidden-lg hidden-md hidden-sm" id="select_post_content_and_post_button_mobile">
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>`;
-    document.getElementById('post_box').innerHTML = photo;
+    var photo1 = `<div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Foto-Link</label>
+                    <input type="text" class="form-control" name="Foto-Link" id="postbox_link" placeholder="Foto-Link">
+                  </div>
+                  <div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Text zum Foto</label>
+                    <textarea class="form-control" name="textpost_textarea" id="textpost_textarea_mobile"></textarea>
+                  </div>`;
+
+    var photo2 = `<button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
+                  <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
+                  <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>`;
+
+    document.getElementById('textpost_textarea_container').innerHTML = photo1;
+    document.getElementById('postbox_buttons_container').innerHTML = photo2;
+    document.getElementById('postbox_buttons_container_mobile').innerHTML = photo2;
     } else if (a == "link") {
-      var link = `<form>
-                    <div class="row">
-                      <div class="col-sm-12 hidden-xs">
-                        <div id="post_box_avatar_cell">
-                          <img src="./../src/img/Profilbild.jpg" class="img-rounded" id="post_box_avatar">
-                        </div>
-                        <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues RUBEN?</h4></span>
-                        <textarea class="form-control" name="post_link" id="postbox_link" placeholder="Link"></textarea><br />
-                        <textarea class="form-control" name="post_textarea" id="postbox_textarea" placeholder="Linkbeschreibung"></textarea><br />
-                      </div>
-                      <div class="hidden-lg hidden-md hidden-sm col-xs-12">
-                        <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues RUBEN?</h4></span>
-                        <textarea class="form-control" name="post_link" id="postbox_link_mobile" placeholder="Foto-Link"></textarea><br />
-                        <textarea class="form-control" name="post_textarea" id="postbox_textarea_mobile" placeholder="Fotobeschreibung"></textarea><br />
-                      </div>
+      var link1 = `<div class="form-group">
+                      <label for="textpost_textarea" class="sr-only">Eingabefeld für Link</label>
+                      <input type="text" class="form-control" name="Link" id="postbox_link" placeholder="Link">
                     </div>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <div class="hidden-xs" id="select_post_content_and_post_button">
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                        </div>
-                        <div class="hidden-lg hidden-md hidden-sm" id="select_post_content_and_post_button_mobile">
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                          <button class="btn btn-default" id="post_box_posten_button" type="submit">Posten</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>`;
-      document.getElementById('post_box').innerHTML = link;
+                    <div class="form-group">
+                      <label for="textpost_textarea" class="sr-only">Eingabefeld für Text zum Link</label>
+                      <textarea class="form-control" name="textpost_textarea" id="textpost_textarea_mobile"></textarea>
+                    </div>`;
+
+      var link2 = ` <button class="btn btn-default select_post_content_buttons" id="post_box_text_button" onclick="change_postbox('text');"><i class="fa fa-align-left fa-lg" aria-hidden="true"></i></button>
+                    <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
+                    <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>`;
+
+      document.getElementById('textpost_textarea_container').innerHTML = link1;
+      document.getElementById('postbox_buttons_container').innerHTML = link2;
+      document.getElementById('postbox_buttons_container_mobile').innerHTML = link2;
     } else {
-      var text = `<form action="" method="post">
-                  <input type="hidden" name="hidden_id" value="<?php if (isset($id)) { echo $id; } ?>">
-                  <input type="hidden" name="token" value="<?php if (function_exists('_token')) { echo _token(); } ?>">
-                  <div class="row">
-                    <div class="col-sm-12 hidden-xs">
-                      <div id="post_box_avatar_cell">
-                        <img src=\'<?php if (isset($profile_picture)) { echo $profile_picture; } elseif (file_exists("./../avatar_uploads/{$_SESSION["username"]}.jpg")) { echo "./../avatar_uploads/{$_SESSION["username"]}.jpg"; } ?>\' class="img-rounded" id="post_box_avatar">
-                      </div>
-                      <span id="whats_new_text_span"><h4 id="whats_new_text">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
-                      <div class="form-group">
-                        <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
-                        <textarea class="form-control" name="textpost_textarea" id="textpost_textarea"></textarea>
-                      </div>
-                    </div>
-                    <div class="hidden-lg hidden-md hidden-sm col-xs-12">
-                      <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
-                      <div class="form-group">
-                        <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
-                        <textarea class="form-control" name="textpost_textarea" id="textpost_textarea_mobile"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="hidden-xs" id="select_post_content_and_post_button">
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default" name ="post_box_posten_button" id="post_box_posten_button" type="submit">Posten</button>
-                      </div>
-                      <div class="hidden-lg hidden-md hidden-sm" id="select_post_content_and_post_button_mobile">
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>
-                        <button class="btn btn-default" name ="post_box_posten_button" id="post_box_posten_button" type="submit">Posten</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>`;
-      document.getElementById('post_box').innerHTML = text;
+      var text1 = `<div class="form-group">
+                      <label for="textpost_textarea" class="sr-only">Eingabefeld für Post-Text</label>
+                      <textarea class="form-control" name="Text" id="textpost_textarea" placeholder="Post"></textarea>
+                    </div>`;
+
+      var text2 = ` <button class="btn btn-default select_post_content_buttons" id="post_box_video_button" onclick="change_postbox('video');"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></button>
+                    <button class="btn btn-default select_post_content_buttons" id="post_box_photo_button" onclick="change_postbox('photo');"><i class="fa fa-camera-retro fa-lg" aria-hidden="true"></i></button>
+                    <button class="btn btn-default select_post_content_buttons" id="post_box_link_button" onclick="change_postbox('link');"><i class="fa fa-link fa-lg" aria-hidden="true"></i></button>`;
+
+      document.getElementById('textpost_textarea_container').innerHTML = text1;
+      document.getElementById('postbox_buttons_container').innerHTML = text2;
+      document.getElementById('postbox_buttons_container_mobile').innerHTML = text2;
       }
 }
