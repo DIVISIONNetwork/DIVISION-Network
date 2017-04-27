@@ -15,16 +15,16 @@
           <div id="textpost_textarea_container">
             <div class="form-group">
               <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
-              <textarea class="form-control" name="textpost_textarea" id="textpost_textarea" placeholder="Post"></textarea>
+              <textarea class="form-control" name="Post-Text" id="textpost_textarea" placeholder="Post"></textarea>
             </div>
           </div>
         </div>
         <div class="hidden-lg hidden-md hidden-sm col-xs-12">
           <span id="whats_new_text_span_mobile"><h4 id="whats_new_text_mobile">Was gibt's Neues <?php if(isset($_SESSION["username"]) || isCookieValid($db)) echo $_SESSION["username"]; ?>?</h4></span>
-          <div id="textpost_textarea_container">
+          <div id="textpost_textarea_container_mobile">
             <div class="form-group">
               <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
-              <textarea class="form-control" name="textpost_textarea" id="textpost_textarea_mobile" placeholder="Post"></textarea>
+              <textarea class="form-control" name="Post-Text" id="textpost_textarea_mobile" placeholder="Post"></textarea>
             </div>
           </div>
         </div>

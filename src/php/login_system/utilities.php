@@ -669,8 +669,17 @@ function validate_token($requestToken) {
 }
 
 
+function _alphanumToken() {
+
+  $alphanumToken = md5(uniqid(rand(), true));
+
+  return $alphanumToken;
+
+}
+
+
 function prepareLogin($id, $username, $remember) {
-  
+
   // $_SESSION['id'] auf die User-ID gesetzt
   $_SESSION['id'] = $id;
   // $_SESSION['username'] auf den Benutzernamen gesetzt,

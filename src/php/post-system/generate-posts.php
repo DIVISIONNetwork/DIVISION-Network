@@ -1,5 +1,5 @@
 <?php
-
+include_once("./../src/php/login_system/utilities.php");
 // Es wird ein SQL-Statement in der Variablen $sqlQuery zusammengesetzt.
 $get_posts_query = "SELECT * FROM posts";
 
@@ -12,7 +12,7 @@ foreach ($get_posts_statement AS $single_post) {
   $user_id = $single_post["user_id"];
   $post_type = $single_post["post_type"];
   $text = $single_post["text"];
-  $posted_at = $single_post["posted_at"];
+  $posted_at = strftime("%d. %B %Y um %H:%I Uhr", strtotime($single_post["posted_at"]));
 
   // Es wird ein SQL-Statement in der Variablen $sqlQuery zusammengesetzt.
   $get_user_query = "SELECT * FROM users WHERE id = :user_id LIMIT 1";
@@ -39,6 +39,8 @@ foreach ($get_posts_statement AS $single_post) {
 
     }
 
+    $token = _alphanumToken();
+
   }
 
   if ($post_type === "text") {
@@ -64,9 +66,17 @@ foreach ($get_posts_statement AS $single_post) {
                 <div class="col-xs-12 post_text">'.$text.'</div>
               </div>
               <div class="row post_interaction_row">
-                <button type="button" class="btn btn-default btn-sm comment_btn">Kommentieren (3)</button>
+                <a class="btn btn-default btn-sm comment_btn" role="button" data-toggle="collapse" href="#'.$token.'" aria-expanded="false" aria-controls="'.$token.'">
+                Kommentieren (3)
+                </a>
                 <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
                 <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+                  <form class="collapse collapse_write_comment" id="'.$token.'">
+                    <div class="form-group">
+                      <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
+                      <textarea class="form-control" name="Post-Text" id="textpost_textarea_mobile" placeholder="Post"></textarea>
+                    </div>
+                  </form>
               </div>
             </div>';
 
@@ -102,9 +112,17 @@ foreach ($get_posts_statement AS $single_post) {
                 </div>
               </div>
               <div class="row post_interaction_row">
-                <button type="button" class="btn btn-default btn-sm comment_btn">Kommentieren (3)</button>
-                <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
-                <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+              <a class="btn btn-default btn-sm comment_btn" role="button" data-toggle="collapse" href="#'.$token.'" aria-expanded="false" aria-controls="'.$token.'">
+              Kommentieren (3)
+              </a>
+              <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
+              <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+                <form class="collapse collapse_write_comment" id="'.$token.'">
+                  <div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
+                    <textarea class="form-control" name="Post-Text" id="textpost_textarea_mobile" placeholder="Post"></textarea>
+                  </div>
+                </form>
               </div>
             </div>';
 
@@ -136,9 +154,17 @@ foreach ($get_posts_statement AS $single_post) {
               </div>
                 <a class="btn btn-default comment_btn" href="'.$link.'" target="_blank"><i class="fa fa-caret-right fa-lg" aria-hidden="true"></i>'." ".$link.'</a>
               <div class="row post_interaction_row">
-                <button type="button" class="btn btn-default btn-sm comment_btn">Kommentieren (3)</button>
-                <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
-                <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+              <a class="btn btn-default btn-sm comment_btn" role="button" data-toggle="collapse" href="#'.$token.'" aria-expanded="false" aria-controls="'.$token.'">
+              Kommentieren (3)
+              </a>
+              <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
+              <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+                <form class="collapse collapse_write_comment" id="'.$token.'">
+                  <div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
+                    <textarea class="form-control" name="Post-Text" id="textpost_textarea_mobile" placeholder="Post"></textarea>
+                  </div>
+                </form>
               </div>
             </div>';
 
@@ -170,11 +196,19 @@ foreach ($get_posts_statement AS $single_post) {
               <div class="row">
                 <div class="col-xs-12 post_text">'.$text.'</div>
               </div>
-                <img src="'.$image_directory_path.'">
+                <img src="'.$image_directory_path.'" class="posted_image">
               <div class="row post_interaction_row">
-                <button type="button" class="btn btn-default btn-sm comment_btn">Kommentieren (3)</button>
-                <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
-                <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+              <a class="btn btn-default btn-sm comment_btn" role="button" data-toggle="collapse" href="#'.$token.'" aria-expanded="false" aria-controls="'.$token.'">
+              Kommentieren (3)
+              </a>
+              <button type="button" class="btn btn-default btn-sm like_button"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> (15)</button>
+              <button type="button" class="btn btn-default btn-sm dislike_button"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> (2)</button>
+                <form class="collapse collapse_write_comment" id="'.$token.'">
+                  <div class="form-group">
+                    <label for="textpost_textarea" class="sr-only">Eingabefeld für Posts</label>
+                    <textarea class="form-control" name="Post-Text" id="textpost_textarea_mobile" placeholder="Post"></textarea>
+                  </div>
+                </form>
               </div>
             </div>';
 
